@@ -1,0 +1,19 @@
+{
+  "name": "cloud-computing-assignment-3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Daniel Manning <danielmanning213@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "web",
+    "server"
+  ],
+  "devDependencies": {
+    "@types/prettier": "^2",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "prettier": "^2.3.1"
+  }
+}
