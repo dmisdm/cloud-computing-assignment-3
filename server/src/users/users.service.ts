@@ -1,24 +1,29 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { DatabaseService } from 'src/database/database.service';
 import { User } from 'src/models';
 
 @Injectable()
 export class UsersService {
-  private readonly users = [
-    {
-      id: 1,
-      name: 'John',
-      email: 'john@john.com',
-      password: 'changeme',
-    },
-    {
-      id: 2,
-      name: 'Maria',
-      email: 'maria@test.com',
-      password: 'guess',
-    },
-  ];
+  constructor(private databaseService: DatabaseService) {}
+
+  async create(user: Omit<User, 'id'>) {
+    if (
+      await this.databaseService.prismaClient.user.findUnique({
+        where: { email: user.email },
+      })
+    ) {
+      return 'AlreadyExists';
+    }
+    return this.databaseService.prismaClient.user.create({
+      data: user,
+    });
+  }
 
   async findOne(email: string): Promise<User | undefined> {
-    return this.users.find((user) => user.email === email);
+    return this.databaseService.prismaClient.user.findUnique({
+      where: {
+        email,
+      },
+    });
   }
 }

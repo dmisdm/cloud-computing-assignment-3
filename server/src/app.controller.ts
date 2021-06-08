@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Controller,
   Get,
   Post,
@@ -8,22 +9,17 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { LoginRequest, UserDTO } from 'src/models';
-import { AppService } from './app.service';
+import { LoginRequest, RegisterRequest, UserDTO } from 'src/models';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
+import { UsersService } from './users/users.service';
 
 @Controller()
 export class AppController {
   constructor(
-    private readonly appService: AppService,
     private readonly authService: AuthService,
+    private readonly userService: UsersService,
   ) {}
-
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
 
   @Post('auth/login')
   async login(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
@@ -39,10 +35,31 @@ export class AppController {
     res.cookie('access_token', authServiceResponse.access_token);
     return authServiceResponse.payload;
   }
+  @Post('auth/register')
+  async register(
+    @Req() req: Request,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const request = RegisterRequest.create(req.body);
+    const createdUserResult = await this.userService.create(request);
+    if (createdUserResult === 'AlreadyExists') {
+      throw new BadRequestException('A user with that email already exists');
+    }
+    const authServiceResponse = await this.authService.signUser(
+      createdUserResult,
+    );
+    res.cookie('access_token', authServiceResponse.access_token);
+    return authServiceResponse.payload;
+  }
 
   @UseGuards(JwtAuthGuard)
   @Get('auth/me')
   async me(@Req() request: Request): Promise<typeof UserDTO.TYPE> {
     return request.user;
+  }
+
+  @Get('/removeme')
+  async test() {
+    return process.env;
   }
 }

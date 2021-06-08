@@ -1,3 +1,3 @@
 export const meta = {
-    appName: "Music Box"
-}
+  appName: "Arxivism",
+};

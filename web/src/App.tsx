@@ -5,28 +5,27 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 import React from "react";
-import { LoginPage } from "./pages/Login";
+import { LoginAndRegisterPage } from "./pages/LoginAndRegister";
 import { Redirect, Route, Switch, BrowserRouter } from "react-router-dom";
 import { AuthenticatedRoute } from "./components/AuthenticatedRoute";
 import { QueryClientProvider } from "react-query";
 import { queryClient } from "./state/queryClient";
+import { HomePage } from "./pages/Home";
 
 const theme = createMuiTheme();
 
 function App() {
   return (
     <BrowserRouter>
-
-    
-    <Switch>
-      <Route exact path="/login">
-          <LoginPage />
-      </Route>
-      <AuthenticatedRoute exact path="/">
-          <h1> You're home </h1>
-      </AuthenticatedRoute>
-      <Redirect to="/" />
-    </Switch>
+      <Switch>
+        <Route exact path="/login">
+          <LoginAndRegisterPage />
+        </Route>
+        <AuthenticatedRoute exact path="/">
+          <HomePage />
+        </AuthenticatedRoute>
+        <Redirect to="/" />
+      </Switch>
     </BrowserRouter>
   );
 }
@@ -36,7 +35,7 @@ function WrappedApp() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <QueryClientProvider client={queryClient}>
-      <App />
+        <App />
       </QueryClientProvider>
     </ThemeProvider>
   );

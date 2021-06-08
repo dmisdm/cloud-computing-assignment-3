@@ -1,18 +1,18 @@
 import { createState, useState } from "@hookstate/core";
+import { Persistence } from "@hookstate/persistence";
 import React from "react";
 import { useMutation } from "react-query";
-import { Persistence } from "@hookstate/persistence";
-import { queryClient } from "./queryClient";
 import { useHistory } from "react-router-dom";
-import { APIError, LoginRequest, UserDTO } from "server/src/models";
+import {
+  APIError,
+  AuthPayload,
+  AxiosErrorReponseData,
+  LoginRequest,
+  RegisterRequest,
+  UserDTO,
+} from "server/src/models";
 import { axiosClient } from "./axiosClient";
-import { AxiosError } from "axios";
-import { type, object } from "superstruct";
-const AxiosErrorReponseData = type({
-  response: type({
-    data: object(),
-  }),
-});
+import { queryClient } from "./queryClient";
 
 export type UserState = {
   hydrated: boolean;
@@ -25,21 +25,17 @@ export const userState = createState<UserState>({
 });
 userState.attach(Persistence("user-state"));
 export const hydrateCurrentUser = () => {
-  if (!userState.value.hydrated) {
-    userState.hydrated.set(true);
-
-    if (userState.value.user) {
-      // Re-fetch me to check if the user is still valid
-      axiosClient
-        .get("/api/me")
-        .then(async (res) => {
-          const response = UserDTO.create(res.data);
-          userState.user.set(response);
-        })
-        .catch(() => {
-          userState.user.set(null);
-        });
-    }
+  if (userState.value.user) {
+    // Re-fetch me to check if the user is still valid
+    axiosClient
+      .get("/api/auth/me")
+      .then(async (res) => {
+        const response = UserDTO.create(res.data);
+        userState.user.set(response);
+      })
+      .catch(() => {
+        userState.user.set(null);
+      });
   }
 };
 
@@ -76,49 +72,20 @@ export const useLoginMutation = () =>
   >(
     "login",
     (params: typeof LoginRequest.TYPE) =>
-      axiosClient
-        .post("/api/auth/login", params)
-        .then(async (response) => {
-          return UserDTO.create(response.data);
-        })
-        .catch((err: unknown) => {
-          if (AxiosErrorReponseData.is(err)) {
-            throw APIError.create(err.response.data);
-          } else if (err instanceof Error) {
-            throw APIError.create(err.message);
-          } else {
-            const error: typeof APIError.TYPE = {
-              detail: null,
-              errorMessage: "Unknown error",
-              errorName: "Unknown",
-            };
-            throw error;
-          }
-        }),
+      axiosClient.post("/api/auth/login", params).then(async (response) => {
+        return UserDTO.create(response.data);
+      }),
     {
       onMutate: () => {
         queryClient.clear();
       },
     }
   );
-/* export const useRegisterMutation = () =>
+export const useRegisterMutation = () =>
   useMutation<
-    typeof RegisterPage.RegistrationSucessResponse.TYPE,
-    typeof APIError["TYPE"] | string,
-    typeof RegisterPage.RegistrationRequest.TYPE
+    typeof AuthPayload.TYPE,
+    typeof APIError["TYPE"],
+    typeof RegisterRequest.TYPE
   >("login", (params) =>
-    fetch("/api/register", {
-      method: "POST",
-      body: JSON.stringify(params),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(async (r) => {
-      if (r.ok) {
-        return RegisterPage.RegistrationSucessResponse.create(await r.json());
-      } else {
-        throw APIError.create(await r.json());
-      }
-    })
+    axiosClient.post("/api/auth/register", params).then((r) => r.data)
   );
- */

@@ -6,7 +6,7 @@ import {
   UseFormRegister,
   get,
 } from "react-hook-form";
-import React from 'react'
+import React from "react";
 
 export function FormTextField<
   FormValues extends FieldValues,
@@ -17,6 +17,7 @@ export function FormTextField<
   register,
   required,
   label,
+  InputProps,
   ...props
 }: React.ComponentPropsWithoutRef<typeof TextField> & {
   label: string;
@@ -33,9 +34,12 @@ export function FormTextField<
       label={label}
       error={shouldShowError && !!formState.errors[name]}
       helperText={shouldShowError && get(formState.errors, name)?.message}
-      InputProps={register(name, {
-        required: required ? `${label} is required` : undefined,
-      })}
+      InputProps={{
+        ...InputProps,
+        ...register(name, {
+          required: required ? `${label} is required` : undefined,
+        }),
+      }}
     />
   );
 }

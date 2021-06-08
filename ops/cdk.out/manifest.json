@@ -1,0 +1,1457 @@
+{
+  "version": "11.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "BackendStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://163565994931/ap-southeast-2",
+      "properties": {
+        "templateFile": "BackendStack.template.json",
+        "validateOnSynth": false
+      },
+      "metadata": {
+        "/BackendStack": [
+          {
+            "type": "aws:cdk:asset",
+            "data": {
+              "repositoryName": "aws-cdk/assets",
+              "imageTag": "d1e7baaba7714ed6c3d9e3c7cd97b409dcad960c64f9db1ed33eeb43ece8c9ab",
+              "id": "d1e7baaba7714ed6c3d9e3c7cd97b409dcad960c64f9db1ed33eeb43ece8c9ab",
+              "packaging": "container-image",
+              "path": "asset.d1e7baaba7714ed6c3d9e3c7cd97b409dcad960c64f9db1ed33eeb43ece8c9ab",
+              "sourceHash": "d1e7baaba7714ed6c3d9e3c7cd97b409dcad960c64f9db1ed33eeb43ece8c9ab",
+              "file": "server/Dockerfile"
+            },
+            "trace": [
+              "ConstructNode.addMetadata (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/construct-compat.ts:451:92)",
+              "LegacyStackSynthesizer.doAddDockerImageAsset (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:139:23)",
+              "LegacyStackSynthesizer.addDockerImageAsset (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:90:19)",
+              "BackendStack.addDockerImageAsset (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/stack.ts:673:29)",
+              "LegacyStackSynthesizer.addDockerImageAsset (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:94:25)",
+              "new DockerImageAsset (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecr-assets-virtual-4a81768c0d/0/cache/@aws-cdk-aws-ecr-assets-npm-1.107.0-321f6c5da3-35b5ddfb33.zip/node_modules/@aws-cdk/aws-ecr-assets/lib/image-asset.ts:174:40)",
+              "AssetImage.bind (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/images/asset-image.ts:29:19)",
+              "new ContainerDefinition (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/container-definition.ts:432:36)",
+              "FargateTaskDefinition.addContainer (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:540:12)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:65:56)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPC83A193D2",
+            "trace": [
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1215:21)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/from-internetSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCfrominternetSubnet1Subnet937FFADC",
+            "trace": [
+              "new Subnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1549:20)",
+              "new PublicSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1764:5)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1395:32",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1377:28)",
+              "Vpc.createSubnets (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1366:12)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1244:10)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/from-internetSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCfrominternetSubnet1RouteTable9A659272",
+            "trace": [
+              "new Subnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1567:19)",
+              "new PublicSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1764:5)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1395:32",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1377:28)",
+              "Vpc.createSubnets (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1366:12)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1244:10)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/from-internetSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCfrominternetSubnet1RouteTableAssociationF9062669",
+            "trace": [
+              "new Subnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1573:5)",
+              "new PublicSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1764:5)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1395:32",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1377:28)",
+              "Vpc.createSubnets (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1366:12)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1244:10)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/from-internetSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCfrominternetSubnet1DefaultRouteCA055604",
+            "trace": [
+              "PublicSubnet.addDefaultInternetRoute (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1589:19)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1263:22",
+              "Array.forEach (<anonymous>)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1262:46)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/from-internetSubnet1/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCfrominternetSubnet1EIPDC3F40FF",
+            "trace": [
+              "PublicSubnet.addNatGateway (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1776:21)",
+              "NatGatewayProvider.configureNat (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/nat.ts:228:27)",
+              "Vpc.createNatGateways (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1347:14)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1269:14)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/from-internetSubnet1/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCfrominternetSubnet1NATGateway766D80E7",
+            "trace": [
+              "PublicSubnet.addNatGateway (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1774:17)",
+              "NatGatewayProvider.configureNat (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/nat.ts:228:27)",
+              "Vpc.createNatGateways (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1347:14)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1269:14)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/from-internetSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCfrominternetSubnet2SubnetCFA3C4EB",
+            "trace": [
+              "new Subnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1549:20)",
+              "new PublicSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1764:5)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1395:32",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1377:28)",
+              "Vpc.createSubnets (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1366:12)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1244:10)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/from-internetSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCfrominternetSubnet2RouteTable59F6ACF0",
+            "trace": [
+              "new Subnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1567:19)",
+              "new PublicSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1764:5)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1395:32",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1377:28)",
+              "Vpc.createSubnets (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1366:12)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1244:10)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/from-internetSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCfrominternetSubnet2RouteTableAssociation66B7B8B4",
+            "trace": [
+              "new Subnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1573:5)",
+              "new PublicSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1764:5)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1395:32",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1377:28)",
+              "Vpc.createSubnets (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1366:12)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1244:10)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/from-internetSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCfrominternetSubnet2DefaultRoute23C8B638",
+            "trace": [
+              "PublicSubnet.addDefaultInternetRoute (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1589:19)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1263:22",
+              "Array.forEach (<anonymous>)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1262:46)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/from-internetSubnet2/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCfrominternetSubnet2EIP64DF15DE",
+            "trace": [
+              "PublicSubnet.addNatGateway (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1776:21)",
+              "NatGatewayProvider.configureNat (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/nat.ts:228:27)",
+              "Vpc.createNatGateways (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1347:14)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1269:14)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/from-internetSubnet2/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCfrominternetSubnet2NATGateway9B9BF26E",
+            "trace": [
+              "PublicSubnet.addNatGateway (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1774:17)",
+              "NatGatewayProvider.configureNat (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/nat.ts:228:27)",
+              "Vpc.createNatGateways (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1347:14)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1269:14)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/internal-trafficSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCinternaltrafficSubnet1Subnet02B42AAB",
+            "trace": [
+              "new Subnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1549:20)",
+              "new PrivateSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1802:5)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1400:33",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1377:28)",
+              "Vpc.createSubnets (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1366:12)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1244:10)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/internal-trafficSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCinternaltrafficSubnet1RouteTable174690B8",
+            "trace": [
+              "new Subnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1567:19)",
+              "new PrivateSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1802:5)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1400:33",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1377:28)",
+              "Vpc.createSubnets (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1366:12)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1244:10)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/internal-trafficSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCinternaltrafficSubnet1RouteTableAssociation82C6A41A",
+            "trace": [
+              "new Subnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1573:5)",
+              "new PrivateSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1802:5)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1400:33",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1377:28)",
+              "Vpc.createSubnets (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1366:12)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1244:10)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/internal-trafficSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCinternaltrafficSubnet1DefaultRoute9599B418",
+            "trace": [
+              "PrivateSubnet.addRoute (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1635:19)",
+              "NatGatewayProvider.configureSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/nat.ts:245:12)",
+              "NatGatewayProvider.configureNat (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/nat.ts:238:12)",
+              "Vpc.createNatGateways (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1347:14)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1269:14)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/internal-trafficSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCinternaltrafficSubnet2Subnet58ACAA8A",
+            "trace": [
+              "new Subnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1549:20)",
+              "new PrivateSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1802:5)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1400:33",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1377:28)",
+              "Vpc.createSubnets (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1366:12)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1244:10)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/internal-trafficSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCinternaltrafficSubnet2RouteTableAF28EA36",
+            "trace": [
+              "new Subnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1567:19)",
+              "new PrivateSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1802:5)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1400:33",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1377:28)",
+              "Vpc.createSubnets (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1366:12)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1244:10)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/internal-trafficSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCinternaltrafficSubnet2RouteTableAssociationD9697217",
+            "trace": [
+              "new Subnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1573:5)",
+              "new PrivateSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1802:5)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1400:33",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1377:28)",
+              "Vpc.createSubnets (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1366:12)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1244:10)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/internal-trafficSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCinternaltrafficSubnet2DefaultRoute39DBDDF3",
+            "trace": [
+              "PrivateSubnet.addRoute (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1635:19)",
+              "NatGatewayProvider.configureSubnet (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/nat.ts:245:12)",
+              "NatGatewayProvider.configureNat (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/nat.ts:238:12)",
+              "Vpc.createNatGateways (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1347:14)",
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1269:14)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCIGWEFDF0B26",
+            "trace": [
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1251:19)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/MainVPC/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MainVPCVPCGW7218CC97",
+            "trace": [
+              "new Vpc (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1257:19)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:22:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/database/SubnetGroup/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "databaseSubnetGroup287EC735",
+            "trace": [
+              "new SubnetGroup (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-rds-virtual-280022f82a/0/cache/@aws-cdk-aws-rds-npm-1.107.0-36c6a4ff7e-213119267c.zip/node_modules/@aws-cdk/aws-rds/lib/subnet-group.ts:78:25)",
+              "new DatabaseInstanceNew (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-rds-virtual-280022f82a/0/cache/@aws-cdk-aws-rds-npm-1.107.0-36c6a4ff7e-213119267c.zip/node_modules/@aws-cdk/aws-rds/lib/instance.ts:661:46)",
+              "new DatabaseInstanceSource (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-rds-virtual-280022f82a/0/cache/@aws-cdk-aws-rds-npm-1.107.0-36c6a4ff7e-213119267c.zip/node_modules/@aws-cdk/aws-rds/lib/instance.ts:844:5)",
+              "new DatabaseInstance (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-rds-virtual-280022f82a/0/cache/@aws-cdk-aws-rds-npm-1.107.0-36c6a4ff7e-213119267c.zip/node_modules/@aws-cdk/aws-rds/lib/instance.ts:987:5)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:37:26)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/database/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "databaseSecurityGroup984F86C4",
+            "trace": [
+              "new SecurityGroup (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:429:26)",
+              "new DatabaseInstanceNew (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-rds-virtual-280022f82a/0/cache/@aws-cdk-aws-rds-npm-1.107.0-36c6a4ff7e-213119267c.zip/node_modules/@aws-cdk/aws-rds/lib/instance.ts:668:53)",
+              "new DatabaseInstanceSource (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-rds-virtual-280022f82a/0/cache/@aws-cdk-aws-rds-npm-1.107.0-36c6a4ff7e-213119267c.zip/node_modules/@aws-cdk/aws-rds/lib/instance.ts:844:5)",
+              "new DatabaseInstance (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-rds-virtual-280022f82a/0/cache/@aws-cdk-aws-rds-npm-1.107.0-36c6a4ff7e-213119267c.zip/node_modules/@aws-cdk/aws-rds/lib/instance.ts:987:5)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:37:26)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/database/SecurityGroup/from BackendStackServiceSecurityGroup2889B127:5432": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "databaseSecurityGroupfromBackendStackServiceSecurityGroup2889B12754321CA5B2CB",
+            "trace": [
+              "SecurityGroup.addIngressRule (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:90:7)",
+              "SecurityGroup.addIngressRule (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:446:13)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:154:23",
+              "ReactiveList.forEachAndForever (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:153:45",
+              "ReactiveList.forEachAndForever (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "Connections.allowFrom (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:152:26)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:87:30)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/database/Secret/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "databaseSecret87F1207C",
+            "trace": [
+              "new Secret (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-secretsmanager-virtual-65eb697b2a/0/cache/@aws-cdk-aws-secretsmanager-npm-1.107.0-8ccc028e13-84603bdffd.zip/node_modules/@aws-cdk/aws-secretsmanager/lib/secret.ts:450:22)",
+              "new DatabaseSecret (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-rds-virtual-280022f82a/0/cache/@aws-cdk-aws-rds-npm-1.107.0-36c6a4ff7e-213119267c.zip/node_modules/@aws-cdk/aws-rds/lib/database-secret.ts:67:5)",
+              "Object.renderCredentials (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-rds-virtual-280022f82a/0/cache/@aws-cdk-aws-rds-npm-1.107.0-36c6a4ff7e-213119267c.zip/node_modules/@aws-cdk/aws-rds/lib/private/util.ts:95:7)",
+              "new DatabaseInstance (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-rds-virtual-280022f82a/0/cache/@aws-cdk-aws-rds-npm-1.107.0-36c6a4ff7e-213119267c.zip/node_modules/@aws-cdk/aws-rds/lib/instance.ts:989:25)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:37:26)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/database/Secret/Attachment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "databaseSecretAttachment5618DFB3",
+            "trace": [
+              "new SecretTargetAttachment (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-secretsmanager-virtual-65eb697b2a/0/cache/@aws-cdk-aws-secretsmanager-npm-1.107.0-8ccc028e13-84603bdffd.zip/node_modules/@aws-cdk/aws-secretsmanager/lib/secret.ts:655:24)",
+              "DatabaseSecret.attach (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-secretsmanager-virtual-65eb697b2a/0/cache/@aws-cdk-aws-secretsmanager-npm-1.107.0-8ccc028e13-84603bdffd.zip/node_modules/@aws-cdk/aws-secretsmanager/lib/secret.ts:317:12)",
+              "new DatabaseInstance (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-rds-virtual-280022f82a/0/cache/@aws-cdk-aws-rds-npm-1.107.0-36c6a4ff7e-213119267c.zip/node_modules/@aws-cdk/aws-rds/lib/instance.ts:1012:28)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:37:26)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/database/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "databaseEBDE4557",
+            "trace": [
+              "new DatabaseInstance (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-rds-virtual-280022f82a/0/cache/@aws-cdk-aws-rds-npm-1.107.0-36c6a4ff7e-213119267c.zip/node_modules/@aws-cdk/aws-rds/lib/instance.ts:992:22)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:37:26)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/BackendCluster/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendCluster5086059C",
+            "trace": [
+              "new Cluster (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:167:21)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:46:25)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/NodeJSServerTaskRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NodeJSServerTaskRoleA211E40D",
+            "trace": [
+              "new Role (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-iam-virtual-490c13c573/0/cache/@aws-cdk-aws-iam-npm-1.107.0-71d1dae163-5eb7b18155.zip/node_modules/@aws-cdk/aws-iam/lib/role.ts:326:18)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:52:26)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/NodeJSServerTaskRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NodeJSServerTaskRoleDefaultPolicyC1E91A0F",
+            "trace": [
+              "new Policy (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-iam-virtual-490c13c573/0/cache/@aws-cdk-aws-iam-npm-1.107.0-71d1dae163-5eb7b18155.zip/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-iam-virtual-490c13c573/0/cache/@aws-cdk-aws-iam-npm-1.107.0-71d1dae163-5eb7b18155.zip/node_modules/@aws-cdk/aws-iam/lib/role.ts:367:28)",
+              "Function.addToPrincipal (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-iam-virtual-490c13c573/0/cache/@aws-cdk-aws-iam-npm-1.107.0-71d1dae163-5eb7b18155.zip/node_modules/@aws-cdk/aws-iam/lib/grant.ts:164:61)",
+              "SecretTargetAttachment.grantRead (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-secretsmanager-virtual-65eb697b2a/0/cache/@aws-cdk-aws-secretsmanager-npm-1.107.0-8ccc028e13-84603bdffd.zip/node_modules/@aws-cdk/aws-secretsmanager/lib/secret.ts:210:30)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:64:72)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/NodeJSServer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NodeJSServer3EE1BC7F",
+            "trace": [
+              "new TaskDefinition (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:402:21)",
+              "new FargateTaskDefinition (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/fargate/fargate-task-definition.ts:111:5)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:59:34)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/NodeJSServer/nodejs-server/LogGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NodeJSServernodejsserverLogGroup2ED66482",
+            "trace": [
+              "new LogGroup (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-logs-virtual-a8eac8286f/0/cache/@aws-cdk-aws-logs-npm-1.107.0-205adebd86-f4df9c7724.zip/node_modules/@aws-cdk/aws-logs/lib/log-group.ts:386:22)",
+              "AwsLogDriver.bind (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/log-drivers/aws-log-driver.ts:119:44)",
+              "new ContainerDefinition (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/container-definition.ts:434:44)",
+              "FargateTaskDefinition.addContainer (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:540:12)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:65:56)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/NodeJSServer/ExecutionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NodeJSServerExecutionRole020B7611",
+            "trace": [
+              "new Role (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-iam-virtual-490c13c573/0/cache/@aws-cdk-aws-iam-npm-1.107.0-71d1dae163-5eb7b18155.zip/node_modules/@aws-cdk/aws-iam/lib/role.ts:326:18)",
+              "FargateTaskDefinition.obtainExecutionRole (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:611:29)",
+              "AssetImage.bind (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/images/asset-image.ts:34:67)",
+              "new ContainerDefinition (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/container-definition.ts:432:36)",
+              "FargateTaskDefinition.addContainer (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:540:12)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:65:56)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/NodeJSServer/ExecutionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "NodeJSServerExecutionRoleDefaultPolicy3BCC7F43",
+            "trace": [
+              "new Policy (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-iam-virtual-490c13c573/0/cache/@aws-cdk-aws-iam-npm-1.107.0-71d1dae163-5eb7b18155.zip/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-iam-virtual-490c13c573/0/cache/@aws-cdk-aws-iam-npm-1.107.0-71d1dae163-5eb7b18155.zip/node_modules/@aws-cdk/aws-iam/lib/role.ts:367:28)",
+              "Function.addToPrincipal (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-iam-virtual-490c13c573/0/cache/@aws-cdk-aws-iam-npm-1.107.0-71d1dae163-5eb7b18155.zip/node_modules/@aws-cdk/aws-iam/lib/grant.ts:164:61)",
+              "Function.addToPrincipalOrResource (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-iam-virtual-490c13c573/0/cache/@aws-cdk-aws-iam-npm-1.107.0-71d1dae163-5eb7b18155.zip/node_modules/@aws-cdk/aws-iam/lib/grant.ts:115:26)",
+              "Import.grant (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecr-virtual-aad9c02151/0/cache/@aws-cdk-aws-ecr-npm-1.107.0-2d2f8e5525-a56e92d2c1.zip/node_modules/@aws-cdk/aws-ecr/lib/repository.ts:259:22)",
+              "Import.grantPull (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecr-virtual-aad9c02151/0/cache/@aws-cdk-aws-ecr-npm-1.107.0-2d2f8e5525-a56e92d2c1.zip/node_modules/@aws-cdk/aws-ecr/lib/repository.ts:272:22)",
+              "AssetImage.bind (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/images/asset-image.ts:34:22)",
+              "new ContainerDefinition (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/container-definition.ts:432:36)",
+              "FargateTaskDefinition.addContainer (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:540:12)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:65:56)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/ServiceSecurityGroup": [
+          {
+            "type": "aws:cdk:warning",
+            "data": "Ignoring Egress rule since 'allowAllOutbound' is set to true; To add customize rules, set allowAllOutbound=false on the SecurityGroup",
+            "trace": [
+              "Annotations.addMessage (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/annotations.ts:92:25)",
+              "Annotations.addWarning (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/annotations.ts:31:10)",
+              "SecurityGroup.addEgressRule (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:466:28)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:131:23",
+              "ReactiveList.forEachAndForever (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:130:45",
+              "ReactiveList.forEachAndForever (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "Connections.allowTo (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:129:26)",
+              "Connections.allowFrom (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:161:25)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:87:30)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/ServiceSecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServiceSecurityGroup61DE1A49",
+            "trace": [
+              "new SecurityGroup (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:429:26)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:83:38)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/ServiceSecurityGroup/from BackendStackServerALBSecurityGroup3DE1153D:80": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServiceSecurityGroupfromBackendStackServerALBSecurityGroup3DE1153D80E4B3EA3E",
+            "trace": [
+              "SecurityGroup.addIngressRule (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:90:7)",
+              "SecurityGroup.addIngressRule (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:446:13)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:154:23",
+              "ReactiveList.forEachAndForever (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:153:45",
+              "ReactiveList.forEachAndForever (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "Connections.allowFrom (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:152:26)",
+              "ApplicationListener.registerConnectable (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-listener.ts:461:29)",
+              "ApplicationTargetGroup.registerListener (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-target-group.ts:213:16)",
+              "TargetGroupListenerAction.bind (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-listener-action.ts:445:10)",
+              "ApplicationListener.setDefaultAction (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-listener.ts:479:12)",
+              "ApplicationListener.addTargetGroups (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-listener.ts:337:12)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:123:18)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/BackendService/Service": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendService7A4224EE",
+            "trace": [
+              "new BaseService (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/base/base-service.ts:376:21)",
+              "new FargateService (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ecs-virtual-c61d493820/0/cache/@aws-cdk-aws-ecs-npm-1.107.0-0448d1313e-e53029d618.zip/node_modules/@aws-cdk/aws-ecs/lib/fargate/fargate-service.ts:153:5)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:88:25)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/ServerALBSecurityGroup": [
+          {
+            "type": "aws:cdk:warning",
+            "data": "Ignoring Egress rule since 'allowAllOutbound' is set to true; To add customize rules, set allowAllOutbound=false on the SecurityGroup",
+            "trace": [
+              "Annotations.addMessage (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/annotations.ts:92:25)",
+              "Annotations.addWarning (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/annotations.ts:31:10)",
+              "SecurityGroup.addEgressRule (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:466:28)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:131:23",
+              "ReactiveList.forEachAndForever (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:130:45",
+              "ReactiveList.forEachAndForever (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "Connections.allowTo (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:129:26)",
+              "Connections.allowFrom (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:161:25)",
+              "ApplicationListener.registerConnectable (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-listener.ts:461:29)",
+              "ApplicationTargetGroup.registerListener (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-target-group.ts:213:16)",
+              "TargetGroupListenerAction.bind (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-listener-action.ts:445:10)",
+              "ApplicationListener.setDefaultAction (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-listener.ts:479:12)",
+              "ApplicationListener.addTargetGroups (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-listener.ts:337:12)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:123:18)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          },
+          {
+            "type": "aws:cdk:warning",
+            "data": "Ignoring Egress rule since 'allowAllOutbound' is set to true; To add customize rules, set allowAllOutbound=false on the SecurityGroup",
+            "trace": [
+              "Annotations.addMessage (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/annotations.ts:92:25)",
+              "Annotations.addWarning (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/annotations.ts:31:10)",
+              "SecurityGroup.addEgressRule (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:466:28)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:131:23",
+              "ReactiveList.forEachAndForever (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:130:45",
+              "ReactiveList.forEachAndForever (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "Connections.allowTo (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:129:26)",
+              "Connections.allowFrom (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:161:25)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:126:42)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/ServerALBSecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServerALBSecurityGroup756ED099",
+            "trace": [
+              "new SecurityGroup (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-ec2-virtual-cdebe87172/0/cache/@aws-cdk-aws-ec2-npm-1.107.0-b66946227d-e0e7afa22b.zip/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:429:26)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:96:34)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/ServerTargetGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServerTargetGroupE85BC710",
+            "trace": [
+              "new TargetGroupBase (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/shared/base-target-group.ts:251:21)",
+              "new ApplicationTargetGroup (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-target-group.ts:121:5)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:99:29)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/BackendALB/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BackendALB30CEFCD3",
+            "trace": [
+              "new BaseLoadBalancer (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/shared/base-load-balancer.ts:208:22)",
+              "new ApplicationLoadBalancer (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-load-balancer.ts:85:5)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:110:21)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/ServerListener/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServerListener66DA63DF",
+            "trace": [
+              "new BaseListener (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/shared/base-listener.ts:109:22)",
+              "new ApplicationListener (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-aws-elasticloadbalancingv2-virtual-02e95977ba/0/cache/@aws-cdk-aws-elasticloadbalancingv2-npm-1.107.0-fcda283b5e-09d0c03a52.zip/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-listener.ts:191:5)",
+              "new BackendStack (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/lib/stack.ts:118:26)",
+              "Object.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/ops/bin/ops.ts:8:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Module.m._compile (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "main (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/danielmanning/.config/yarn/global/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1108:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1137:10)",
+              "Module.load (node:internal/modules/cjs/loader:988:32)",
+              "Function.external_module_.Module._load (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.pnp.js:21654:14)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/BackendStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:22:24)",
+              "/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/private/synthesis.ts:140:5",
+              "visit (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/private/synthesis.ts:202:5)",
+              "visit (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/private/synthesis.ts:198:5)",
+              "injectMetadataResources (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/private/synthesis.ts:131:3)",
+              "Object.synthesize (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/stage.ts:180:23)",
+              "process.<anonymous> (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/$$virtual/@aws-cdk-core-virtual-52340e64e8/0/cache/@aws-cdk-core-npm-1.107.0-8176698418-207728dbfc.zip/node_modules/@aws-cdk/core/lib/app.ts:123:45)",
+              "Object.onceWrapper (node:events:472:26)",
+              "process.emit (node:events:365:28)",
+              "process.emit (node:domain:470:12)",
+              "process.emit (/Users/danielmanning/.config/yarn/global/node_modules/source-map-support/source-map-support.js:495:21)",
+              "process.emit (/Volumes/Shared/UserData/danielmanning/dev/cloud-computing-assignment-3/.yarn/cache/source-map-support-npm-0.5.19-65b33ae61e-59d4efaae9.zip/node_modules/source-map-support/source-map-support.js:495:21)"
+            ]
+          }
+        ]
+      },
+      "displayName": "BackendStack"
+    }
+  }
+}
