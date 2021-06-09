@@ -19,7 +19,7 @@ export class UsersService {
     });
   }
 
-  async findOne(email: string): Promise<User | undefined> {
+  async findOne(email: string): Promise<User | null> {
     return this.databaseService.prismaClient.user.findUnique({
       where: {
         email,

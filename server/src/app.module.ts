@@ -7,6 +7,8 @@ import { DatabaseModule } from './database/database.module';
 import { HealthController } from './health/health.controller';
 import { SearchModule } from './search/search.module';
 import { UsersModule } from './users/users.module';
+import { ArticlesController } from './articles/articles.controller';
+import { ArticlesProvider } from './articles/articles.provider';
 
 @Module({
   imports: [
@@ -17,6 +19,7 @@ import { UsersModule } from './users/users.module';
     ConfigModule,
     SearchModule,
   ],
-  controllers: [AppController, HealthController],
+  controllers: [AppController, HealthController, ArticlesController],
+  providers: [ArticlesProvider],
 })
 export class AppModule {}

@@ -1,11 +1,14 @@
 import { fromUnixTime, parseISO } from 'date-fns';
 import {
   array,
+  boolean,
   coerce,
   date,
+  literal,
   number,
   object,
   optional,
+  record,
   string,
   type,
   union,
@@ -24,6 +27,12 @@ export type User = {
   password: string;
   name: string;
 };
+
+export const ArticleSource = union([literal('User'), literal('Arxiv')]);
+
+export const Like = type({
+  articleId: string(),
+});
 
 export const LoginRequest = type({
   email: string(),
@@ -54,6 +63,7 @@ export const APIError = coerce(
       errorMessage: string(),
       errorName: string(),
       detail: optional(unknown()),
+      statusCode: optional(number()),
     }),
     string(),
     (value) => ({
@@ -68,9 +78,13 @@ export const APIError = coerce(
   (value) => ({
     errorMessage: value.message,
     errorName: 'Unknown',
+    statusCode: value.statusCode,
   }),
 );
-
+const Author = type({ name: string() });
+const Category = type({
+  '@_term': string(),
+});
 export const SearchRequest = type({
   query: string(),
   limit: optional(number()),
@@ -78,7 +92,6 @@ export const SearchRequest = type({
 });
 
 export const SearchResults = type({
-  total: number(),
   offset: number(),
   limit: number(),
   query: string(),
@@ -89,32 +102,28 @@ export const SearchResults = type({
       published: coercedDate,
       title: string(),
       summary: string(),
-      authors: union([
-        array(type({ name: string() })),
-        type({ name: string() }),
-      ]),
+      authors: array(string()),
+      categories: array(string()),
     }),
   ),
 });
 
+export const AggregatedSearchResults = record(string(), SearchResults);
+export const ArxivEntry = type({
+  id: string(),
+  updated: coercedDate,
+  published: coercedDate,
+  title: string(),
+  summary: string(),
+  author: union([array(Author), Author]),
+  category: union([array(Category), Category]),
+});
 export const ArxivSearchResults = type({
   feed: type({
-    'opensearch:totalResults': number(),
-    'opensearch:startIndex': number(),
-    'opensearch:itemsPerPage': number(),
-    entry: array(
-      type({
-        id: string(),
-        updated: coercedDate,
-        published: coercedDate,
-        title: string(),
-        summary: string(),
-        author: union([
-          array(type({ name: string() })),
-          type({ name: string() }),
-        ]),
-      }),
-    ),
+    'opensearch:totalResults': type({
+      '#text': number(),
+    }),
+    entry: union([array(ArxivEntry), optional(ArxivEntry)]),
   }),
 });
 
