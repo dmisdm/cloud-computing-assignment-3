@@ -235,6 +235,7 @@ export class BackendStack extends cdk.Stack {
         },
       }
     );
+    latestFrontendVersion.addDependsOn(frontend);
 
     const frontendEnvironment = new elasticbeanstalk.CfnEnvironment(
       this,
