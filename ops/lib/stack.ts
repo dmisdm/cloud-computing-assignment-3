@@ -12,13 +12,17 @@ import { DockerImage, Duration } from "@aws-cdk/core";
 import * as lambda from "@aws-cdk/aws-lambda";
 import * as apigateway from "@aws-cdk/aws-apigateway";
 import * as elasticbeanstalk from "@aws-cdk/aws-elasticbeanstalk";
+import * as s3assets from "@aws-cdk/aws-s3-assets";
+import { exec } from "shelljs";
 const fromRoot = (...relativeParts: string[]) =>
   path.resolve(process.cwd(), "../", ...relativeParts);
 
 export class BackendStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-
+    exec("./bundle.sh", {
+      cwd: fromRoot("."),
+    });
     const internalTrafficSubnetName = "internal-traffic";
     const fromInternetSubnetName = "from-internet";
     const vpc = new ec2.Vpc(this, "MainVPC", {
@@ -87,9 +91,13 @@ export class BackendStack extends cdk.Stack {
       {
         image: serverImage,
         environment: {
-          POSTGRES_SECRET_ARN: database.secret!!.secretName,
           NODE_ENV: "production",
           PORT: "80",
+        },
+        secrets: {
+          POSTGRES_SECRET_JSON: ecs.Secret.fromSecretsManager(
+            database.secret!!
+          ),
         },
         logging: ecs.LogDriver.awsLogs({ streamPrefix: "nodejs-service" }),
       }
@@ -127,8 +135,7 @@ export class BackendStack extends cdk.Stack {
 
     const { username, password, host, port, dbInstanceIdentifier } =
       database.secret!!.secretValue.toJSON();
-    const postgresUrl = `postgresql://${username}:${password}@${host}:${port}/${dbInstanceIdentifier}`;
-    console.log(postgresUrl);
+
     albSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(80));
     albSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(443));
 
@@ -208,5 +215,46 @@ export class BackendStack extends cdk.Stack {
     });
 
     serviceSecurityGroup.connections.allowFrom(alb, ec2.Port.tcp(80));
+
+    const frontend = new elasticbeanstalk.CfnApplication(this, "Frontend", {
+      applicationName: "Frontend",
+    });
+
+    const frontendAssets = new s3assets.Asset(this, "FrontendAssets", {
+      path: fromRoot("bundle.zip"),
+    });
+
+    const latestFrontendVersion = new elasticbeanstalk.CfnApplicationVersion(
+      this,
+      "LatestFrontendVersion",
+      {
+        applicationName: "Frontend",
+        sourceBundle: {
+          s3Bucket: frontendAssets.s3BucketName,
+          s3Key: frontendAssets.s3ObjectKey,
+        },
+      }
+    );
+
+    const frontendEnvironment = new elasticbeanstalk.CfnEnvironment(
+      this,
+      "FrontendEnvironment",
+      {
+        applicationName: "Frontend",
+        platformArn:
+          "arn:aws:elasticbeanstalk:ap-southeast-2::platform/Node.js 12 running on 64bit Amazon Linux 2/5.0.2",
+        versionLabel: latestFrontendVersion.ref,
+        optionSettings: [
+          {
+            namespace: "aws:elasticbeanstalk:application:environment",
+            optionName: "BACKEND_URL",
+            value: "http://" + alb.loadBalancerDnsName,
+          },
+        ],
+      }
+    );
+    frontendEnvironment.addDependsOn(latestFrontendVersion);
+
+    frontendEnvironment.addDependsOn(frontend);
   }
 }

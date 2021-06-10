@@ -3884,7 +3884,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/glob@npm:*":
+"@types/glob@npm:*, @types/glob@npm:^7":
   version: 7.1.3
   resolution: "@types/glob@npm:7.1.3"
   dependencies:
@@ -10266,9 +10266,11 @@ __metadata:
     "@aws-cdk/aws-rds": ^1.107.0
     "@aws-cdk/aws-s3": ^1.107.0
     "@aws-cdk/core": 1.107.0
+    "@types/glob": ^7
     "@types/node": ^15.12.1
     "@types/shelljs": ^0
     aws-cdk: 1.107.0
+    glob: ^7.1.7
     lambda-zip: ^0.3.2
     shelljs: ^0.8.4
     source-map-support: ^0.5.16

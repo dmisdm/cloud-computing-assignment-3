@@ -32,6 +32,11 @@ const Secret = type({
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             Secret.create(JSON.parse(response.SecretString!));
           postgresUrl = `postgresql://${username}:${password}@${host}:${port}/${dbInstanceIdentifier}`;
+        } else if (appConfig.postgresSecretJson) {
+          const { username, password, host, port, dbInstanceIdentifier } =
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            Secret.create(appConfig.postgresSecretJson);
+          postgresUrl = `postgresql://${username}:${password}@${host}:${port}/${dbInstanceIdentifier}`;
         }
 
         const prisma = new PrismaClient({
