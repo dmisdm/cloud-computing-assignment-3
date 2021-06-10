@@ -8,6 +8,6 @@ COPY . .
 WORKDIR /usr/src/app/server
 RUN yarn workspaces focus 
 RUN yarn build
-
+RUN yarn cache clean
 
 CMD ["./run-in-docker.sh"]

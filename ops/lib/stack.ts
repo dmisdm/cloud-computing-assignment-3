@@ -1,5 +1,5 @@
 import * as ec2 from "@aws-cdk/aws-ec2";
-import { SubnetType } from "@aws-cdk/aws-ec2";
+import { InstanceType, SubnetType } from "@aws-cdk/aws-ec2";
 import * as ecs from "@aws-cdk/aws-ecs";
 import { EcrImage } from "@aws-cdk/aws-ecs";
 import * as elb from "@aws-cdk/aws-elasticloadbalancingv2";
@@ -43,6 +43,9 @@ export class BackendStack extends cdk.Stack {
 
     const database = new rds.DatabaseInstance(this, "database", {
       vpc,
+      instanceType: new InstanceType("t2.micro"),
+      allocatedStorage: 20,
+      backupRetention: Duration.days(0),
       engine: DatabaseInstanceEngine.postgres({
         version: rds.PostgresEngineVersion.VER_13,
       }),
@@ -132,9 +135,6 @@ export class BackendStack extends cdk.Stack {
       "ServerALBSecurityGroup",
       { vpc }
     );
-
-    const { username, password, host, port, dbInstanceIdentifier } =
-      database.secret!!.secretValue.toJSON();
 
     albSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(80));
     albSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(443));
@@ -236,14 +236,13 @@ export class BackendStack extends cdk.Stack {
       }
     );
     latestFrontendVersion.addDependsOn(frontend);
-
+    const platform = this.node.tryGetContext("platform");
     const frontendEnvironment = new elasticbeanstalk.CfnEnvironment(
       this,
       "FrontendEnvironment",
       {
         applicationName: "Frontend",
-        platformArn:
-          "arn:aws:elasticbeanstalk:ap-southeast-2::platform/Node.js 12 running on 64bit Amazon Linux 2/5.0.2",
+        platformArn: platform,
         versionLabel: latestFrontendVersion.ref,
         optionSettings: [
           {
