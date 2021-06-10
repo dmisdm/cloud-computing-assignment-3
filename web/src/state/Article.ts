@@ -1,16 +1,24 @@
-import { Like } from "server/src/models";
-import { string, type, never, any, array, optional } from "superstruct";
+import { Article, Like } from "server/src/models";
+import {
+  string,
+  type,
+  never,
+  any,
+  array,
+  optional,
+  instance,
+} from "superstruct";
 import { makeMutator, makeQuerier } from "./common";
 import { queryClient } from "./queryClient";
 export const likesKey = "likes";
 const params = type({
   articleId: string(),
 });
-export const useLike = makeMutator(
+export const useBookmark = makeMutator(
   {
     paramsStruct: params,
     resultStruct: Like,
-    url: "/api/articles/like",
+    url: "/api/articles/bookmark",
     key: "like",
   },
   {
@@ -23,6 +31,13 @@ export const useLike = makeMutator(
             data?.concat([
               {
                 articleId,
+                article: {
+                  authors: [],
+                  id: "unknown",
+                  source: "",
+                  summary: "",
+                  title: "",
+                },
               },
             ]) || []
           );
@@ -31,11 +46,11 @@ export const useLike = makeMutator(
     },
   }
 );
-export const useUnlike = makeMutator(
+export const useUnbookmark = makeMutator(
   {
     paramsStruct: params,
     resultStruct: Like,
-    url: "/api/articles/unlike",
+    url: "/api/articles/unbookmark",
     key: "unlike",
   },
   {
@@ -53,9 +68,28 @@ export const useUnlike = makeMutator(
   }
 );
 
-export const useLikes = makeQuerier({
+export const useBookmarks = makeQuerier({
   paramsStruct: optional(any()),
   key: likesKey,
   resultStruct: array(Like),
-  url: "/api/articles/liked",
+  url: "/api/articles/bookmarks",
+});
+
+export const usePublications = makeQuerier({
+  paramsStruct: optional(any()),
+  key: "publications",
+  resultStruct: array(Article),
+  url: "/api/articles/my",
+});
+
+export const usePublishArticle = makeMutator({
+  paramsStruct: type({
+    title: string(),
+    summary: string(),
+    document: instance(File),
+  }),
+  resultStruct: any(),
+  key: "publishArticle",
+  url: "/api/articles/publish",
+  multipartForm: true,
 });

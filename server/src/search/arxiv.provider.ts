@@ -3,7 +3,7 @@ import { parse } from 'fast-xml-parser';
 import { axiosClient } from 'src/axios';
 import { DatabaseService } from 'src/database/database.service';
 import { ArxivSearchResults, SearchResults } from 'src/models';
-import * as Url from 'url-parse';
+import Url from 'url-parse';
 import { SearchSource } from './types';
 
 export const arxivBaseUrl = Url('http://export.arxiv.org/api/query');

@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { User } from 'src/models';
 
@@ -15,7 +15,10 @@ export class UsersService {
       return 'AlreadyExists';
     }
     return this.databaseService.prismaClient.user.create({
-      data: user,
+      data: {
+        ...user,
+        roles: ['Basic'],
+      },
     });
   }
 

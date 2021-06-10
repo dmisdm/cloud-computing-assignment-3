@@ -1,11 +1,11 @@
-import { Strategy } from 'passport-jwt';
-import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
-import { jwtConstants } from './constants';
-import { AuthPayload, User, UserDTO } from 'src/models';
+import { PassportStrategy } from '@nestjs/passport';
 import { Request } from 'express';
+import { Strategy } from 'passport-jwt';
+import { AuthPayload, UserDTO } from 'src/models';
+import { jwtConstants } from './constants';
 
-var cookieExtractor = function (req: Request) {
+const cookieExtractor = function (req: Request) {
   return req.cookies['access_token'];
 };
 

@@ -8,8 +8,10 @@ import { DatabaseInstanceEngine } from "@aws-cdk/aws-rds";
 import * as cdk from "@aws-cdk/core";
 import * as path from "path";
 import * as iam from "@aws-cdk/aws-iam";
-import { Duration, StringConcat } from "@aws-cdk/core";
-
+import { DockerImage, Duration } from "@aws-cdk/core";
+import * as lambda from "@aws-cdk/aws-lambda";
+import * as apigateway from "@aws-cdk/aws-apigateway";
+import * as elasticbeanstalk from "@aws-cdk/aws-elasticbeanstalk";
 const fromRoot = (...relativeParts: string[]) =>
   path.resolve(process.cwd(), "../", ...relativeParts);
 
@@ -63,6 +65,14 @@ export class BackendStack extends cdk.Stack {
       ],
     });
 
+    taskRole.addToPolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        resources: ["*"],
+        actions: ["secretsmanager:GetSecretValue"],
+      })
+    );
+
     const nodejsServerTask = new ecs.FargateTaskDefinition(
       this,
       "NodeJSServer",
@@ -72,38 +82,15 @@ export class BackendStack extends cdk.Stack {
         taskRole,
       }
     );
-    database.secret?.grantRead(taskRole);
     const nodejsServerContainer = nodejsServerTask.addContainer(
       "nodejs-server",
       {
         image: serverImage,
-        secrets: {
-          POSTGRES_HOST: ecs.Secret.fromSecretsManager(
-            database.secret!!,
-            "host"
-          ),
-          POSTGRES_PASSWORD: ecs.Secret.fromSecretsManager(
-            database.secret!!,
-            "password"
-          ),
-          POSTGRES_PORT: ecs.Secret.fromSecretsManager(
-            database.secret!!,
-            "port"
-          ),
-          POSTGRES_DB: ecs.Secret.fromSecretsManager(
-            database.secret!!,
-            "dbInstanceIdentifier"
-          ),
-          POSTGRES_USER: ecs.Secret.fromSecretsManager(
-            database.secret!!,
-            "username"
-          ),
-        },
         environment: {
+          POSTGRES_SECRET_ARN: database.secret!!.secretName,
           NODE_ENV: "production",
           PORT: "80",
         },
-
         logging: ecs.LogDriver.awsLogs({ streamPrefix: "nodejs-service" }),
       }
     );
@@ -138,8 +125,54 @@ export class BackendStack extends cdk.Stack {
       { vpc }
     );
 
+    const { username, password, host, port, dbInstanceIdentifier } =
+      database.secret!!.secretValue.toJSON();
+    const postgresUrl = `postgresql://${username}:${password}@${host}:${port}/${dbInstanceIdentifier}`;
+    console.log(postgresUrl);
     albSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(80));
     albSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(443));
+
+    const lambdaRole = new iam.Role(this, "UploaderLambdaRole", {
+      roleName: "UploaderLambdaRole",
+      assumedBy: new iam.ServicePrincipal("lambda.amazonaws.com"),
+      managedPolicies: [
+        iam.ManagedPolicy.fromAwsManagedPolicyName(
+          "service-role/AWSLambdaBasicExecutionRole"
+        ),
+      ],
+    });
+    /*     const uploaderLambda = new lambda.Function(this, "UploaderLambda", {
+      role: lambdaRole,
+      runtime: lambda.Runtime.NODEJS_14_X,
+      code: new lambda.AssetCode(fromRoot(".")),
+      handler: "server/dist/lambda.handler",
+      securityGroups: [serviceSecurityGroup],
+    }); */
+    const uploaderLambda = new lambda.DockerImageFunction(
+      this,
+      "UploaderLambda",
+      {
+        role: lambdaRole,
+        securityGroups: [serviceSecurityGroup],
+        code: lambda.DockerImageCode.fromImageAsset(fromRoot("."), {
+          file: "server/lambda.Dockerfile",
+        }),
+      }
+    );
+
+    lambdaRole.addToPolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        resources: ["*"],
+        actions: ["secretsmanager:GetSecretValue"],
+      })
+    );
+
+    const lambdaEndpoint = new apigateway.LambdaRestApi(
+      this,
+      "UploaderLambdaRestApi",
+      { handler: uploaderLambda }
+    );
 
     const targetGroup = new elb.ApplicationTargetGroup(
       this,
@@ -150,9 +183,9 @@ export class BackendStack extends cdk.Stack {
         targets: [service],
         healthCheck: {
           path: "/api/health",
-          timeout: Duration.seconds(30),
-          unhealthyThresholdCount: 10,
-          interval: Duration.seconds(40),
+          timeout: Duration.seconds(15),
+          unhealthyThresholdCount: 5,
+          interval: Duration.seconds(16),
         },
       }
     );

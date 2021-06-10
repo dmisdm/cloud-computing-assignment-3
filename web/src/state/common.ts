@@ -16,11 +16,13 @@ export const makeMutator =
       resultStruct,
       key,
       url,
+      multipartForm,
     }: {
       paramsStruct: Struct<Params>;
       resultStruct: Struct<Result>;
       key: string;
       url: string;
+      multipartForm?: boolean;
     },
     outerOptions?: UseMutationOptions<
       Struct<Result>["TYPE"],
@@ -39,8 +41,16 @@ export const makeMutator =
       key,
       (params) => {
         const cancelTokenSource = axios.CancelToken.source();
+        let body: FormData | Params = paramsStruct.create(params);
+        if (multipartForm) {
+          const formData = new FormData();
+          Object.entries(params).forEach((entry) =>
+            formData.append(entry[0], entry[1])
+          );
+          body = formData;
+        }
         const req = axiosClient
-          .post(url, paramsStruct.create(params), {
+          .post(url, body, {
             cancelToken: cancelTokenSource.token,
           })
           .then((r) => resultStruct.create(r.data));
@@ -55,7 +65,7 @@ export const makeMutator =
       }
     );
 export const makeQuerier =
-  <Params extends object, Result>(
+  <Params, Result>(
     {
       paramsStruct,
       resultStruct,
@@ -75,15 +85,28 @@ export const makeQuerier =
     >
   ) =>
   (
-    params: Struct<Params>["TYPE"],
-    options?: UseQueryOptions<
-      Struct<Result>["TYPE"],
-      typeof APIError["TYPE"],
-      Struct<Result>["TYPE"],
-      [string, Params]
-    >
-  ) =>
-    useQuery<
+    ...args: Params extends undefined
+      ? [
+          params?: Struct<Params>["TYPE"],
+          options?: UseQueryOptions<
+            Struct<Result>["TYPE"],
+            typeof APIError["TYPE"],
+            Struct<Result>["TYPE"],
+            [string, Params]
+          >
+        ]
+      : [
+          params: Struct<Params>["TYPE"],
+          options?: UseQueryOptions<
+            Struct<Result>["TYPE"],
+            typeof APIError["TYPE"],
+            Struct<Result>["TYPE"],
+            [string, Params]
+          >
+        ]
+  ) => {
+    const [params, options] = args;
+    return useQuery<
       Struct<Result>["TYPE"],
       typeof APIError["TYPE"],
       Struct<Result>["TYPE"],
@@ -105,3 +128,4 @@ export const makeQuerier =
       },
       { ...outerOptions, ...options }
     );
+  };

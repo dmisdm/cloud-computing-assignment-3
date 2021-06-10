@@ -5,7 +5,9 @@ ENV NODE_ENV=${NODE_ENV}
 WORKDIR /usr/src/app
 
 COPY . .
-RUN yarn workspaces focus server
 WORKDIR /usr/src/app/server
+RUN yarn workspaces focus 
+RUN yarn build
+
 
 CMD ["./run-in-docker.sh"]

@@ -55,7 +55,7 @@ export class AppController {
   @UseGuards(JwtAuthGuard)
   @Get('auth/me')
   async me(@Req() request: Request): Promise<typeof UserDTO.TYPE> {
-    return request.user;
+    return UserDTO.create(request.user);
   }
 
   @Get('/removeme')

@@ -1,2 +1,3 @@
 cdk*
 ops/cdk.out
+node_modules

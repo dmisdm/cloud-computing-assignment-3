@@ -11,10 +11,12 @@ import { Redirect, Route, Router, Switch } from "react-router-dom";
 import { QueryParamProvider } from "use-query-params";
 import { AuthenticatedRoute } from "./components/AuthenticatedRoute";
 import { NavBar } from "./components/NavBar";
-import { HomePage } from "./pages/Home";
+import { SearchPage } from "./pages/Search";
 import { LoginAndRegisterPage } from "./pages/LoginAndRegister";
+import { PublishPage } from "./pages/Publish";
 import { history } from "./state/history";
 import { queryClient } from "./state/queryClient";
+import { HomePage } from "./pages/Home";
 
 const theme = createMuiTheme({
   typography: {
@@ -38,9 +40,11 @@ function App() {
           <AuthenticatedRoute exact path="/home">
             <HomePage />
           </AuthenticatedRoute>
+          <AuthenticatedRoute exact path="/search">
+            <SearchPage />
+          </AuthenticatedRoute>
           <AuthenticatedRoute exact path="/publish">
-            <NavBar />
-            <h1>Publish shit</h1>
+            <PublishPage />
           </AuthenticatedRoute>
           <Redirect to="/home" />
         </Switch>

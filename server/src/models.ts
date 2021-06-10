@@ -30,10 +30,6 @@ export type User = {
 
 export const ArticleSource = union([literal('User'), literal('Arxiv')]);
 
-export const Like = type({
-  articleId: string(),
-});
-
 export const LoginRequest = type({
   email: string(),
   password: string(),
@@ -91,21 +87,21 @@ export const SearchRequest = type({
   offset: optional(number()),
 });
 
+export const ArxivArticle = type({
+  id: string(),
+  updated: coercedDate,
+  published: coercedDate,
+  title: string(),
+  summary: string(),
+  authors: array(string()),
+  categories: array(string()),
+});
+
 export const SearchResults = type({
   offset: number(),
   limit: number(),
   query: string(),
-  results: array(
-    type({
-      id: string(),
-      updated: coercedDate,
-      published: coercedDate,
-      title: string(),
-      summary: string(),
-      authors: array(string()),
-      categories: array(string()),
-    }),
-  ),
+  results: array(ArxivArticle),
 });
 
 export const AggregatedSearchResults = record(string(), SearchResults);
@@ -137,4 +133,21 @@ export const RegisterRequest = type({
   email: string(),
   password: string(),
   name: string(),
+});
+
+export const Article = type({
+  id: string(),
+  title: string(),
+  summary: string(),
+  source: string(),
+  authors: array(
+    type({
+      name: string(),
+    }),
+  ),
+  arxivArticle: optional(ArxivArticle),
+});
+export const Like = type({
+  articleId: string(),
+  article: Article,
 });

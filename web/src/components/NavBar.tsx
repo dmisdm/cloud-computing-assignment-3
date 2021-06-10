@@ -14,6 +14,10 @@ const tabs = [
     pathPrefix: "/home",
   },
   {
+    label: "Search",
+    pathPrefix: "/search",
+  },
+  {
     label: "Publish",
     pathPrefix: "/publish",
   },

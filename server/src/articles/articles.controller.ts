@@ -1,37 +1,64 @@
 import { Like } from '.prisma/client';
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Req,
+  UploadedFile,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { IsNotEmpty } from 'class-validator';
 import { Request } from 'express';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { DatabaseService } from 'src/database/database.service';
 import { UserDTO } from 'src/models';
 import { ArticlesProvider } from './articles.provider';
-
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { appConfig } from 'src/config/config';
+import { v4 } from 'uuid';
+import { Article } from '.prisma/client';
 class ArticleLikeDTO {
   @IsNotEmpty()
   articleId!: string;
 }
 
+class ArticleCreateDTO {
+  @IsNotEmpty()
+  title!: string;
+  @IsNotEmpty()
+  summary!: string;
+}
+
 @UseGuards(JwtAuthGuard)
 @Controller('articles')
 export class ArticlesController {
+  s3Client: S3Client;
+  bucket: string;
+  publicBaseUrl: URL;
+  region: string;
   constructor(
     private database: DatabaseService,
     private articlesProvider: ArticlesProvider,
-  ) {}
-  @Post('like')
-  async like(
+  ) {
+    this.s3Client = new S3Client({});
+    this.bucket = appConfig.articlesBucket;
+    this.region = appConfig.awsRegion;
+    this.publicBaseUrl = new URL(
+      `https://{this.bucket}.s3.${this.region}.amazonaws.com/`,
+    );
+  }
+
+  @Post('bookmark')
+  async bookmark(
     @Req() request: Request,
     @Body() body: ArticleLikeDTO,
   ): Promise<Like> {
     const user = UserDTO.create(request.user);
-    let isArxiv = false;
-    try {
-      const parsedId = new URL(body.articleId);
-      if (parsedId.host === 'arxiv.org') {
-        isArxiv = true;
-      }
 
+    try {
       await this.articlesProvider.syncArticles([body.articleId]);
     } catch (e) {}
 
@@ -47,11 +74,18 @@ export class ArticlesController {
         userId: user.id,
       },
       update: {},
+      include: {
+        article: {
+          include: {
+            authors: true,
+          },
+        },
+      },
     });
     return like;
   }
-  @Post('unlike')
-  async unlike(
+  @Post('unbookmark')
+  async unbookmark(
     @Req() request: Request,
     @Body() article: ArticleLikeDTO,
   ): Promise<Like> {
@@ -63,15 +97,31 @@ export class ArticlesController {
           userId: user.id,
         },
       },
+      include: {
+        article: {
+          include: {
+            authors: true,
+          },
+        },
+      },
     });
   }
 
-  @Get('liked')
-  async getLiked(@Req() request: Request): Promise<Like[]> {
+  @Get('bookmarks')
+  async getBookmarks(@Req() request: Request): Promise<Like[]> {
     const user = UserDTO.create(request.user);
-    return this.database.prismaClient.like.findMany({
+    const found = await this.database.prismaClient.like.findMany({
       where: { userId: user.id },
+      include: {
+        article: {
+          include: {
+            authors: true,
+          },
+        },
+      },
     });
+
+    return found;
   }
 
   @Get('my')
@@ -79,9 +129,47 @@ export class ArticlesController {
     const user = UserDTO.create(request.user);
     const foundDbUser = await this.database.prismaClient.user.findUnique({
       where: { id: user.id },
-      include: { authored: true },
+      include: {
+        authored: {
+          include: {
+            authors: true,
+          },
+        },
+      },
     });
 
     return foundDbUser?.authored || [];
+  }
+
+  @Post('publish')
+  @UseInterceptors(FileInterceptor('document'))
+  async publish(
+    @Req() request: Request,
+    @Body() body: ArticleCreateDTO,
+    @UploadedFile() document: Express.Multer.File,
+  ): Promise<Article> {
+    const user = UserDTO.create(request.user);
+    const newKey = `${v4()}-${document.originalname}`;
+    const command = new PutObjectCommand({
+      Bucket: appConfig.articlesBucket,
+      Key: newKey,
+      Body: document.buffer,
+      ACL: 'public-read',
+    });
+    await this.s3Client.send(command);
+
+    return this.database.prismaClient.article.create({
+      data: {
+        authors: {
+          connect: {
+            id: user.id,
+          },
+        },
+        documentUrl: new URL(`/${newKey}`, this.publicBaseUrl).href,
+        source: 'User',
+        summary: body.summary,
+        title: body.title,
+      },
+    });
   }
 }
