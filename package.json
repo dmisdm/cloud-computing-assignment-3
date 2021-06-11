@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "yarn build && yarn workspace web dev --port ${PORT:-8080}",
+    "start": "yarn workspace web dev --host --port ${PORT:-8080}",
     "bundle": "zip -r frontendAssets.zip ./ -x .git\\* \\*node_modules\\* .yarn/unplugged\\* .yarn/cache\\* ops\\*"
   },
   "workspaces": [

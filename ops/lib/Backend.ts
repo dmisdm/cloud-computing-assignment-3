@@ -13,16 +13,14 @@ import * as lambda from "@aws-cdk/aws-lambda";
 import * as apigateway from "@aws-cdk/aws-apigateway";
 import * as elasticbeanstalk from "@aws-cdk/aws-elasticbeanstalk";
 import * as s3assets from "@aws-cdk/aws-s3-assets";
+import * as s3 from "@aws-cdk/aws-s3";
 import { exec } from "shelljs";
-const fromRoot = (...relativeParts: string[]) =>
-  path.resolve(process.cwd(), "../", ...relativeParts);
+import { fromRoot } from "./utils";
+import { BucketAccessControl } from "@aws-cdk/aws-s3";
 
 export class BackendStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-    exec("./bundle.sh", {
-      cwd: fromRoot("."),
-    });
     const internalTrafficSubnetName = "internal-traffic";
     const fromInternetSubnetName = "from-internet";
     const vpc = new ec2.Vpc(this, "MainVPC", {
@@ -45,6 +43,7 @@ export class BackendStack extends cdk.Stack {
       vpc,
       instanceType: new InstanceType("t2.micro"),
       allocatedStorage: 20,
+      storageType: rds.StorageType.STANDARD,
       backupRetention: Duration.days(0),
       engine: DatabaseInstanceEngine.postgres({
         version: rds.PostgresEngineVersion.VER_13,
@@ -52,6 +51,13 @@ export class BackendStack extends cdk.Stack {
       vpcSubnets: vpc.selectSubnets({
         subnetType: SubnetType.PRIVATE,
       }),
+    });
+
+    const publicationsBucket = new s3.Bucket(this, "Publications", {
+      bucketName: "cloud-computing-assignment-3-publications",
+      accessControl: BucketAccessControl.PUBLIC_READ,
+      publicReadAccess: true,
+      versioned: false,
     });
 
     const cluster = new ecs.Cluster(this, "BackendCluster", {
@@ -96,15 +102,16 @@ export class BackendStack extends cdk.Stack {
         environment: {
           NODE_ENV: "production",
           PORT: "80",
+          ARTICLES_BUCKET: publicationsBucket.bucketName,
         },
         secrets: {
-          POSTGRES_SECRET_JSON: ecs.Secret.fromSecretsManager(
-            database.secret!!
-          ),
+          POSTGRES_SECRET_JSON: ecs.Secret.fromSecretsManager(database.secret!),
         },
         logging: ecs.LogDriver.awsLogs({ streamPrefix: "nodejs-service" }),
       }
     );
+
+    database.secret!.grantRead(taskRole);
 
     nodejsServerContainer.addPortMappings({
       containerPort: 80,
@@ -125,7 +132,7 @@ export class BackendStack extends cdk.Stack {
       taskDefinition: nodejsServerTask,
       cluster,
       vpcSubnets: vpc.selectSubnets({
-        subnets: [vpc.publicSubnets[0], vpc.privateSubnets[0]],
+        subnetType: SubnetType.PRIVATE,
       }),
       securityGroups: [serviceSecurityGroup],
     });
@@ -159,11 +166,20 @@ export class BackendStack extends cdk.Stack {
       this,
       "UploaderLambda",
       {
+        vpc,
+        vpcSubnets: vpc.selectSubnets({
+          subnetType: SubnetType.PRIVATE,
+        }),
         role: lambdaRole,
         securityGroups: [serviceSecurityGroup],
         code: lambda.DockerImageCode.fromImageAsset(fromRoot("."), {
           file: "server/lambda.Dockerfile",
         }),
+        environment: {
+          NODE_ENV: "production",
+          ARTICLES_BUCKET: publicationsBucket.bucketName,
+          POSTGRES_SECRET_ARN: database.secret!.secretName,
+        },
       }
     );
 
@@ -174,6 +190,7 @@ export class BackendStack extends cdk.Stack {
         actions: ["secretsmanager:GetSecretValue"],
       })
     );
+    database.secret!.grantRead(uploaderLambda);
 
     const lambdaEndpoint = new apigateway.LambdaRestApi(
       this,
@@ -215,46 +232,5 @@ export class BackendStack extends cdk.Stack {
     });
 
     serviceSecurityGroup.connections.allowFrom(alb, ec2.Port.tcp(80));
-
-    const frontend = new elasticbeanstalk.CfnApplication(this, "Frontend", {
-      applicationName: "Frontend",
-    });
-
-    const frontendAssets = new s3assets.Asset(this, "FrontendAssets", {
-      path: fromRoot("bundle.zip"),
-    });
-
-    const latestFrontendVersion = new elasticbeanstalk.CfnApplicationVersion(
-      this,
-      "LatestFrontendVersion",
-      {
-        applicationName: "Frontend",
-        sourceBundle: {
-          s3Bucket: frontendAssets.s3BucketName,
-          s3Key: frontendAssets.s3ObjectKey,
-        },
-      }
-    );
-    latestFrontendVersion.addDependsOn(frontend);
-    const platform = this.node.tryGetContext("platform");
-    const frontendEnvironment = new elasticbeanstalk.CfnEnvironment(
-      this,
-      "FrontendEnvironment",
-      {
-        applicationName: "Frontend",
-        platformArn: platform,
-        versionLabel: latestFrontendVersion.ref,
-        optionSettings: [
-          {
-            namespace: "aws:elasticbeanstalk:application:environment",
-            optionName: "BACKEND_URL",
-            value: "http://" + alb.loadBalancerDnsName,
-          },
-        ],
-      }
-    );
-    frontendEnvironment.addDependsOn(latestFrontendVersion);
-
-    frontendEnvironment.addDependsOn(frontend);
   }
 }
