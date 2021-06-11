@@ -12,5 +12,10 @@ const envOptions = {
 };
 
 const app = new cdk.App();
-new FrontendStack(app, "FrontendStack", envOptions);
-new BackendStack(app, "BackendStack", envOptions);
+const backendStack = new BackendStack(app, "BackendStack", envOptions);
+new FrontendStack(
+  app,
+  "FrontendStack",
+  { backendUrl: "http://" + backendStack.alb.loadBalancerDnsName },
+  envOptions
+);

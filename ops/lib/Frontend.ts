@@ -5,7 +5,12 @@ import * as cdk from "@aws-cdk/core";
 import { exec } from "shelljs";
 import { fromRoot } from "./utils";
 export class FrontendStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+  constructor(
+    scope: cdk.Construct,
+    id: string,
+    dependencies: { backendUrl: string },
+    props?: cdk.StackProps
+  ) {
     super(scope, id, props);
 
     exec("./bundle.sh", {
@@ -67,6 +72,12 @@ export class FrontendStack extends cdk.Stack {
             namespace: "aws:autoscaling:launchconfiguration",
             optionName: "InstanceType",
             value: "t3.small",
+          },
+
+          {
+            namespace: "aws:elasticbeanstalk:application:environment",
+            optionName: "BACKEND_URL",
+            value: dependencies.backendUrl,
           },
         ],
       }

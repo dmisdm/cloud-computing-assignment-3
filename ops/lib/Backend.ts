@@ -17,8 +17,10 @@ import * as s3 from "@aws-cdk/aws-s3";
 import { exec } from "shelljs";
 import { fromRoot } from "./utils";
 import { BucketAccessControl } from "@aws-cdk/aws-s3";
+import { ApplicationLoadBalancer } from "@aws-cdk/aws-elasticloadbalancingv2";
 
 export class BackendStack extends cdk.Stack {
+  alb: ApplicationLoadBalancer;
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
     const internalTrafficSubnetName = "internal-traffic";
@@ -232,5 +234,7 @@ export class BackendStack extends cdk.Stack {
     });
 
     serviceSecurityGroup.connections.allowFrom(alb, ec2.Port.tcp(80));
+
+    this.alb = alb;
   }
 }
