@@ -4,12 +4,12 @@
     "ops#build": {
       "lastModified": 1623329237600.2563,
       "status": "succeeded",
-      "haveCheckedForRerun": true,
-      "rerun": false,
+      "haveCheckedForRerun": false,
+      "rerun": true,
       "command": "build"
     },
     "server#build": {
-      "lastModified": 1623329907900.3408,
+      "lastModified": 1623338822495.2776,
       "status": "succeeded",
       "haveCheckedForRerun": true,
       "rerun": false,
@@ -18,8 +18,8 @@
     "web#build": {
       "lastModified": 1623329936935.2454,
       "status": "succeeded",
-      "haveCheckedForRerun": true,
-      "rerun": false,
+      "haveCheckedForRerun": false,
+      "rerun": true,
       "command": "build"
     }
   }

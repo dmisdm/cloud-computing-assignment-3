@@ -18,6 +18,7 @@ import { exec } from "shelljs";
 import { fromRoot } from "./utils";
 import { BucketAccessControl } from "@aws-cdk/aws-s3";
 import { ApplicationLoadBalancer } from "@aws-cdk/aws-elasticloadbalancingv2";
+import { Effect } from "@aws-cdk/aws-iam";
 
 export class BackendStack extends cdk.Stack {
   alb: ApplicationLoadBalancer;
@@ -43,7 +44,7 @@ export class BackendStack extends cdk.Stack {
 
     const database = new rds.DatabaseInstance(this, "database", {
       vpc,
-      instanceType: new InstanceType("t2.micro"),
+      instanceType: new InstanceType("t3.micro"),
       allocatedStorage: 20,
       storageType: rds.StorageType.STANDARD,
       backupRetention: Duration.days(0),
@@ -155,6 +156,9 @@ export class BackendStack extends cdk.Stack {
         iam.ManagedPolicy.fromAwsManagedPolicyName(
           "service-role/AWSLambdaBasicExecutionRole"
         ),
+        iam.ManagedPolicy.fromAwsManagedPolicyName(
+          "service-role/AWSLambdaVPCAccessExecutionRole"
+        ),
       ],
     });
     /*     const uploaderLambda = new lambda.Function(this, "UploaderLambda", {
@@ -192,6 +196,7 @@ export class BackendStack extends cdk.Stack {
         actions: ["secretsmanager:GetSecretValue"],
       })
     );
+
     database.secret!.grantRead(uploaderLambda);
 
     const lambdaEndpoint = new apigateway.LambdaRestApi(
@@ -209,9 +214,6 @@ export class BackendStack extends cdk.Stack {
         targets: [service],
         healthCheck: {
           path: "/api/health",
-          timeout: Duration.seconds(15),
-          unhealthyThresholdCount: 5,
-          interval: Duration.seconds(16),
         },
       }
     );
