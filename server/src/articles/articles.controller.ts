@@ -1,4 +1,4 @@
-import { Like } from '.prisma/client';
+import { Like } from 'prisma-client';
 import {
   Body,
   Controller,
@@ -19,7 +19,7 @@ import { ArticlesProvider } from './articles.provider';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { appConfig } from 'src/config/config';
 import { v4 } from 'uuid';
-import { Article } from '.prisma/client';
+import { Article } from 'prisma-client';
 class ArticleLikeDTO {
   @IsNotEmpty()
   articleId!: string;

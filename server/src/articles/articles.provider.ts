@@ -1,4 +1,4 @@
-import { Article } from '.prisma/client';
+import { Article } from 'prisma-client';
 import { Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { ArxivSearchSourceProvider } from 'src/search/arxiv.provider';

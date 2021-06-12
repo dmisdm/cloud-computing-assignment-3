@@ -1,4 +1,3 @@
-import * as apigateway from "@aws-cdk/aws-apigateway";
 import { SecurityGroup, SubnetType, Vpc } from "@aws-cdk/aws-ec2";
 import * as iam from "@aws-cdk/aws-iam";
 import * as lambda from "@aws-cdk/aws-lambda";
@@ -6,6 +5,7 @@ import * as cdk from "@aws-cdk/core";
 import { fromRoot } from "./utils";
 
 export class LambdaFunctionsStack extends cdk.Stack {
+  function: lambda.Function;
   constructor(
     scope: cdk.Construct,
     id: string,
@@ -41,6 +41,7 @@ export class LambdaFunctionsStack extends cdk.Stack {
       this,
       "UploaderLambda",
       {
+        functionName: "BackendLambda",
         vpc,
         vpcSubnets: vpc.selectSubnets({
           subnetType: SubnetType.PRIVATE,
@@ -66,10 +67,6 @@ export class LambdaFunctionsStack extends cdk.Stack {
       })
     );
 
-    const lambdaEndpoint = new apigateway.LambdaRestApi(
-      this,
-      "UploaderLambdaRestApi",
-      { handler: uploaderLambda }
-    );
+    this.function = uploaderLambda;
   }
 }

@@ -5,6 +5,7 @@ import { BackendStack } from "../lib/Backend";
 import { FrontendStack } from "../lib/Frontend";
 import { LambdaFunctionsStack } from "../lib/LambdaFunctions";
 import * as yargs from "yargs";
+import { GatewayStack } from "../lib/Gateway";
 
 const { backendImageTag } = yargs
   .options({
@@ -30,13 +31,10 @@ const backendStack = new BackendStack(
   { backendImageTag },
   envOptions
 );
-new FrontendStack(
-  app,
-  "FrontendStack",
-  { backendUrl: "http://" + backendStack.alb.loadBalancerDnsName },
-  envOptions
-);
-new LambdaFunctionsStack(
+const backendLoadBalancerEndpoint =
+  "http://" + backendStack.alb.loadBalancerDnsName;
+
+const lambdaStack = new LambdaFunctionsStack(
   app,
   "LambdaFunctions",
   {
@@ -45,5 +43,22 @@ new LambdaFunctionsStack(
     publicationsBucketName: backendStack.publicationsBucket.bucketName,
     serviceSecurityGroup: backendStack.serviceSecurityGroup,
   },
+  envOptions
+);
+
+const gateway = new GatewayStack(
+  app,
+  "Gateway",
+  {
+    backendLambda: lambdaStack.function,
+    backendLoadBalancerEndpoint,
+  },
+  envOptions
+);
+
+new FrontendStack(
+  app,
+  "FrontendStack",
+  { backendUrl: gateway.api.url },
   envOptions
 );

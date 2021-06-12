@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { parse } from 'fast-xml-parser';
 import { axiosClient } from 'src/axios';
-import { DatabaseService } from 'src/database/database.service';
 import { ArxivSearchResults, SearchResults } from 'src/models';
 import Url from 'url-parse';
 import { SearchSource } from './types';
@@ -10,7 +9,7 @@ export const arxivBaseUrl = Url('http://export.arxiv.org/api/query');
 
 @Injectable()
 export class ArxivSearchSourceProvider implements SearchSource {
-  name: string = 'arxiv';
+  name = 'arxiv';
   async search(
     params:
       | {

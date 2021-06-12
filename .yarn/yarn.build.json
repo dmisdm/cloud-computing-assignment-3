@@ -9,10 +9,10 @@
       "command": "build"
     },
     "server#build": {
-      "lastModified": 1623468720442.337,
+      "lastModified": 1623475946535.968,
       "status": "succeeded",
-      "haveCheckedForRerun": false,
-      "rerun": true,
+      "haveCheckedForRerun": true,
+      "rerun": false,
       "command": "build"
     },
     "web#build": {
@@ -30,7 +30,7 @@
       "command": "build"
     },
     "prisma-client#build": {
-      "lastModified": 1623472305295.8757,
+      "lastModified": 1623476008353.643,
       "status": "succeeded",
       "haveCheckedForRerun": true,
       "rerun": false,
