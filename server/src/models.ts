@@ -39,12 +39,14 @@ export const AuthPayload = type({
   sub: number(),
   email: string(),
   name: string(),
+  roles: array(string()),
 });
 export const UserDTO = coerce(
   type({
     email: string(),
     id: number(),
     name: string(),
+    roles: array(string()),
   }),
   AuthPayload,
   (authPayload) => ({

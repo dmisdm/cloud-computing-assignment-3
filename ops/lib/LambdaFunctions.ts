@@ -1,6 +1,7 @@
 import { SecurityGroup, SubnetType, Vpc } from "@aws-cdk/aws-ec2";
 import * as iam from "@aws-cdk/aws-iam";
 import * as lambda from "@aws-cdk/aws-lambda";
+import { Bucket } from "@aws-cdk/aws-s3";
 import * as cdk from "@aws-cdk/core";
 import { Duration } from "@aws-cdk/core";
 import { fromRoot } from "./utils";
@@ -13,12 +14,14 @@ export class LambdaFunctionsStack extends cdk.Stack {
     {
       vpc,
       serviceSecurityGroup,
-      publicationsBucketName,
+      publicationsBucket,
+      analyticsBucket,
       databaseSecretName,
     }: {
       vpc: Vpc;
       serviceSecurityGroup: SecurityGroup;
-      publicationsBucketName: string;
+      publicationsBucket: Bucket;
+      analyticsBucket: Bucket;
       databaseSecretName: string;
     },
     props?: cdk.StackProps
@@ -35,9 +38,13 @@ export class LambdaFunctionsStack extends cdk.Stack {
         iam.ManagedPolicy.fromAwsManagedPolicyName(
           "service-role/AWSLambdaVPCAccessExecutionRole"
         ),
+        iam.ManagedPolicy.fromAwsManagedPolicyName(
+          "policy/AmazonEMRFullAccessPolicy_v2"
+        ),
       ],
     });
-
+    analyticsBucket.grantReadWrite(lambdaRole);
+    publicationsBucket.grantReadWrite(lambdaRole);
     const uploaderLambda = new lambda.DockerImageFunction(
       this,
       "UploaderLambda",
@@ -54,7 +61,7 @@ export class LambdaFunctionsStack extends cdk.Stack {
         }),
         environment: {
           NODE_ENV: "production",
-          ARTICLES_BUCKET: publicationsBucketName,
+          ARTICLES_BUCKET: publicationsBucket.bucketName,
           POSTGRES_SECRET_ARN: databaseSecretName,
         },
         timeout: Duration.seconds(15),

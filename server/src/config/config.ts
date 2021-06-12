@@ -9,6 +9,10 @@ export const appConfig = yargs
     type: 'string',
     demandOption: true,
   })
+  .option('analyticsBucket', {
+    type: 'string',
+    demandOption: true,
+  })
   .option('awsRegion', {
     type: 'string',
     demandOption: true,

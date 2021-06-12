@@ -1,13 +1,10 @@
 import * as cdk from "@aws-cdk/core";
-import * as apigateway from "@aws-cdk/aws-apigatewayv2";
-import {
-  LambdaProxyIntegration,
-  HttpProxyIntegration,
-} from "@aws-cdk/aws-apigatewayv2-integrations";
+import * as apigateway from "@aws-cdk/aws-apigateway";
 import { Function } from "@aws-cdk/aws-lambda";
 
+import { RestApi } from "@aws-cdk/aws-apigateway";
 export class GatewayStack extends cdk.Stack {
-  api: apigateway.HttpApi;
+  api: RestApi;
   constructor(
     scope: cdk.Construct,
     id: string,
@@ -19,31 +16,36 @@ export class GatewayStack extends cdk.Stack {
   ) {
     super(scope, id, props);
 
-    const api = new apigateway.HttpApi(this, "BackendFederatedApi", {
-      createDefaultStage: true,
-      apiName: "Backend",
+    const api = new apigateway.RestApi(this, "BackendFederatedApi", {
+      restApiName: "Backend",
       description:
         "The API that federates every other backend/api within our stack into one",
     });
 
     this.api = api;
 
-    const lambdaIntegration = new LambdaProxyIntegration({
-      handler: backendLambda,
+    const lambdaIntegration = new apigateway.LambdaIntegration(backendLambda, {
+      proxy: true,
     });
 
-    const fargateServiceIntegration = new HttpProxyIntegration({
-      url: `${backendLoadBalancerEndpoint}/api/{proxy}`,
+    const fargateServiceIntegration = new apigateway.HttpIntegration(
+      `${backendLoadBalancerEndpoint}/{proxy}`,
+      { proxy: true }
+    );
+    const rootApiResource = api.root.addResource("api");
+    const rootProxyMethod = rootApiResource.addProxy({
+      anyMethod: true,
+      defaultIntegration: fargateServiceIntegration,
     });
-    api.addRoutes({
-      integration: fargateServiceIntegration,
-      path: "/api/{proxy+}",
-      methods: [apigateway.HttpMethod.ANY],
-    });
-    api.addRoutes({
-      integration: lambdaIntegration,
-      path: "/api/articles/publish",
-      methods: [apigateway.HttpMethod.ANY],
-    });
+    const publishArticleResource = rootApiResource
+      .addResource("articles")
+      .addResource("publish");
+    const publishArticleMethod = publishArticleResource.addMethod(
+      "POST",
+      lambdaIntegration
+    );
+
+    const analyticsJob = rootApiResource.addResource("run-analytics-job");
+    analyticsJob.addMethod("POST", lambdaIntegration);
   }
 }

@@ -1,5 +1,6 @@
 package arxivism
 import org.apache.hadoop.conf.*
+import org.apache.hadoop.fs.FileSystem
 import org.apache.hadoop.fs.Path
 import org.apache.hadoop.io.*
 import org.apache.hadoop.mapreduce.Job
@@ -25,9 +26,11 @@ object WordCount {
         job.setReducerClass(Reduce::class.java)
         job.setInputFormatClass(TextInputFormat::class.java)
         job.setOutputFormatClass(TextOutputFormat::class.java)
+        var outputDir = Path(args[2])
         FileInputFormat.addInputPath(job, Path(args[1]))
-        FileOutputFormat.setOutputPath(job, Path(args[2]))
+        FileOutputFormat.setOutputPath(job, outputDir)
         job.waitForCompletion(true)
+
     }
 
     class Map : Mapper<LongWritable, Text, Text?, IntWritable>() {

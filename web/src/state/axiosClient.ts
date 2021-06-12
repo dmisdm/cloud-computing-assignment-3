@@ -8,6 +8,7 @@ axiosClient.interceptors.response.use(undefined, (err: unknown) => {
     if (apiError.statusCode === 401) {
       history.push("/login");
     }
+    throw apiError;
   } else if (err instanceof Error) {
     throw APIError.create(err.message);
   } else {

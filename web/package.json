@@ -34,6 +34,7 @@
     "react-hook-form": "^7.8.4",
     "react-query": "^3.17.0",
     "react-router-dom": "^5.2.0",
+    "recharts": "^2.0.9",
     "server": "workspace:server",
     "superstruct": "^0.15.2",
     "use-query-params": "^1.2.2",

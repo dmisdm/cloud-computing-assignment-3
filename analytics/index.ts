@@ -1,75 +1,26 @@
-#!/usr/bin/env yarn ts-node
-import yargs from "yargs";
 import * as emr from "@aws-sdk/client-emr";
 import * as s3 from "@aws-sdk/client-s3";
 import fs from "fs";
 import path from "path";
-import { exec } from "shelljs";
-import {
-  GetSecretValueCommand,
-  SecretsManagerClient,
-} from "@aws-sdk/client-secrets-manager";
-import { PrismaClient } from "prisma-client";
-
-exec("./gradlew clean shadowJar", {
-  cwd: path.resolve(__dirname, "./mapreducer"),
-});
+import packageJson from "./package.json";
 const jarContents = fs.readFileSync(
   path.resolve(
     __dirname,
-    "./mapreducer/build/libs/mapreducer-1.0-SNAPSHOT-all.jar"
+    "../mapreducer/build/libs/mapreducer-1.0-SNAPSHOT-all.jar"
   )
 );
 
-const {
+export async function run({
   awsRegion,
-  postgresSecretArn,
-  inputObjectKey,
   bucketName,
+  inputObjectKey,
   outputObjectKey,
-} = yargs
-  .options({
-    awsRegion: {
-      type: "string",
-      demandOption: true,
-    },
-    bucketName: {
-      type: "string",
-      default: "arxivism-emr",
-    },
-    inputObjectKey: {
-      type: "string",
-      default: "input",
-    },
-    outputObjectKey: {
-      type: "string",
-      default: "output",
-    },
-    postgresSecretArn: {
-      type: "string",
-      demandOption: true,
-    },
-  })
-  .env()
-  .parseSync();
-
-async function run() {
-  const secretsManagerClient = new SecretsManagerClient({ region: awsRegion });
-  const getDbSecretCommand = new GetSecretValueCommand({
-    SecretId: postgresSecretArn,
-  });
-  const { host, port, dbInstanceIdentifier, username, password } = JSON.parse(
-    (await secretsManagerClient.send(getDbSecretCommand)).SecretString!
-  );
-
-  const prismaClient = new PrismaClient({
-    datasources: {
-      db: {
-        url: `postgresql://${username}:${password}@${host}:${port}/${dbInstanceIdentifier}`,
-      },
-    },
-  });
-  await prismaClient.$connect();
+}: {
+  awsRegion: string;
+  bucketName: string;
+  inputObjectKey: string;
+  outputObjectKey: string;
+}) {
   const jarName = "mapreducer.jar";
   const s3Client = new s3.S3Client({ region: awsRegion });
   const putCommand = new s3.PutObjectCommand({
@@ -116,5 +67,3 @@ async function run() {
     ],
   });
 }
-
-run();

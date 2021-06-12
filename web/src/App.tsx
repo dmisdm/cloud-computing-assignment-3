@@ -17,6 +17,7 @@ import { PublishPage } from "./pages/Publish";
 import { history } from "./state/history";
 import { queryClient } from "./state/queryClient";
 import { HomePage } from "./pages/Home";
+import { AnalyticsPage } from "./pages/Analytics";
 
 const theme = createMuiTheme({
   typography: {
@@ -45,6 +46,9 @@ function App() {
           </AuthenticatedRoute>
           <AuthenticatedRoute exact path="/publish">
             <PublishPage />
+          </AuthenticatedRoute>
+          <AuthenticatedRoute allowedRoles={["Admin"]} exact path="/analytics">
+            <AnalyticsPage />
           </AuthenticatedRoute>
           <Redirect to="/home" />
         </Switch>

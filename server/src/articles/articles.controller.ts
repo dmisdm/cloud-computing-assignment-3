@@ -47,7 +47,7 @@ export class ArticlesController {
     this.bucket = appConfig.articlesBucket;
     this.region = appConfig.awsRegion;
     this.publicBaseUrl = new URL(
-      `https://{this.bucket}.s3.${this.region}.amazonaws.com/`,
+      `https://${this.bucket}.s3.${this.region}.amazonaws.com/`,
     );
   }
 

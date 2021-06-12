@@ -1,6 +1,13 @@
-import { Box, Button, Container, Typography } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Container,
+  Typography,
+} from "@material-ui/core";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import { FormTextField } from "src/components/FormTextField";
 import { NavBar } from "src/components/NavBar";
 import { UploadButton } from "src/components/UploadButton";
@@ -15,14 +22,31 @@ type Form = {
 function NewPublicationForm() {
   const { register, formState, handleSubmit, control } = useForm<Form>();
   const publishArticle = usePublishArticle();
+  const [loading, setLoading] = React.useState(false);
+  const history = useHistory();
   return (
     <Box p="1rem">
       <form
         onSubmit={handleSubmit((values) => {
-          publishArticle.mutate({
-            ...values,
-            document: values.document.item(0)!!,
-          });
+          setLoading(true);
+          publishArticle.mutate(
+            {
+              ...values,
+              document: values.document.item(0)!!,
+            },
+            {
+              onSuccess: () => {
+                history.push("/home");
+                setLoading(false);
+              },
+              onSettled: () => {
+                setLoading(false);
+              },
+              onError: () => {
+                setLoading(false);
+              },
+            }
+          );
         })}
       >
         <Box display="flex" flexDirection="column" style={{ gap: "1rem" }}>
@@ -49,7 +73,13 @@ function NewPublicationForm() {
             name="document"
             label="Article"
           />
-          <Button type="submit">Publish</Button>
+          <Button
+            endIcon={loading && <CircularProgress size="1rem" />}
+            disabled={loading}
+            type="submit"
+          >
+            Publish
+          </Button>
         </Box>
       </form>
     </Box>

@@ -19,6 +19,7 @@ export class BackendStack extends cdk.Stack {
   vpc: Vpc;
   serviceSecurityGroup: SecurityGroup;
   publicationsBucket: Bucket;
+  analyticsBucket: Bucket;
   databaseSecretName: string;
   constructor(
     scope: cdk.Construct,
@@ -74,6 +75,14 @@ export class BackendStack extends cdk.Stack {
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
 
+    const analyticsBucket = new s3.Bucket(this, "EMRAnalytics", {
+      bucketName: "cloud-computing-assignment-3-analytics",
+      versioned: false,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+    });
+
+    this.analyticsBucket = analyticsBucket;
+
     this.publicationsBucket = publicationsBucket;
 
     const cluster = new ecs.Cluster(this, "BackendCluster", {
@@ -86,6 +95,9 @@ export class BackendStack extends cdk.Stack {
       managedPolicies: [
         iam.ManagedPolicy.fromAwsManagedPolicyName(
           "service-role/AmazonECSTaskExecutionRolePolicy"
+        ),
+        iam.ManagedPolicy.fromAwsManagedPolicyName(
+          "policy/AmazonEMRFullAccessPolicy_v2"
         ),
       ],
     });
@@ -129,6 +141,7 @@ export class BackendStack extends cdk.Stack {
           NODE_ENV: "production",
           PORT: "80",
           ARTICLES_BUCKET: publicationsBucket.bucketName,
+          ANALYTICS_BUCKET: analyticsBucket.bucketName,
         },
         secrets: {
           POSTGRES_SECRET_JSON: ecs.Secret.fromSecretsManager(database.secret!),
@@ -138,6 +151,7 @@ export class BackendStack extends cdk.Stack {
     );
 
     publicationsBucket.grantReadWrite(taskRole);
+    analyticsBucket.grantReadWrite(taskRole);
     database.secret!.grantRead(taskRole);
 
     nodejsServerContainer.addPortMappings({

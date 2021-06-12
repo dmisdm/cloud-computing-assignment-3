@@ -21,6 +21,11 @@ const tabs = [
     label: "Publish",
     pathPrefix: "/publish",
   },
+  {
+    label: "Analytics",
+    pathPrefix: "/analytics",
+    allowedRoles: ["Admin"],
+  },
 ];
 
 export function NavBar() {
@@ -60,13 +65,21 @@ export function NavBar() {
                   !history.location.pathname.startsWith(v) && history.push(v)
                 }
               >
-                {tabs.map((tab) => (
-                  <Tab
-                    value={tab.pathPrefix}
-                    key={tab.label}
-                    label={tab.label}
-                  />
-                ))}
+                {tabs
+                  .filter((tab) =>
+                    !tab.allowedRoles
+                      ? true
+                      : !!tab.allowedRoles.find((role) =>
+                          state.value.user?.roles.includes(role)
+                        )
+                  )
+                  .map((tab) => (
+                    <Tab
+                      value={tab.pathPrefix}
+                      key={tab.label}
+                      label={tab.label}
+                    />
+                  ))}
               </Tabs>
             </Grid>
           </Grid>

@@ -85,7 +85,7 @@ export const makeQuerier =
     >
   ) =>
   (
-    ...args: Params extends undefined
+    ...args: Params extends undefined | unknown
       ? [
           params?: Struct<Params>["TYPE"],
           options?: UseQueryOptions<

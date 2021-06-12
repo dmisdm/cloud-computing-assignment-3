@@ -40,8 +40,9 @@ const lambdaStack = new LambdaFunctionsStack(
   {
     vpc: backendStack.vpc,
     databaseSecretName: backendStack.databaseSecretName,
-    publicationsBucketName: backendStack.publicationsBucket.bucketName,
+    publicationsBucket: backendStack.publicationsBucket,
     serviceSecurityGroup: backendStack.serviceSecurityGroup,
+    analyticsBucket: backendStack.analyticsBucket,
   },
   envOptions
 );

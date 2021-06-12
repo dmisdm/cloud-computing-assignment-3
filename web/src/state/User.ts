@@ -44,8 +44,10 @@ export const useUser = (redirectIfUnauthenticated: boolean = true) => {
   const router = useHistory();
 
   React.useEffect(() => {
-    if (!state.value.user && redirectIfUnauthenticated) {
-      router.push("/login");
+    if (redirectIfUnauthenticated) {
+      if (!state.value.user) {
+        router.push("/login");
+      }
     }
   });
   return {
