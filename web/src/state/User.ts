@@ -15,12 +15,10 @@ import { axiosClient } from "./axiosClient";
 import { queryClient } from "./queryClient";
 
 export type UserState = {
-  hydrated: boolean;
   user: typeof UserDTO.TYPE | null;
 };
 
 export const userState = createState<UserState>({
-  hydrated: false,
   user: null,
 });
 userState.attach(Persistence("user-state"));

@@ -5,12 +5,11 @@ ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /usr/src/app
 
-COPY . .
+COPY package.json .yarnrc.yml yarn.lock ./
+COPY .yarn .yarn
+COPY server server
 WORKDIR /usr/src/app/server
-RUN yarn workspaces focus
-RUN yarn build
-RUN yarn workspaces focus --production
-RUN yarn cache clean --all
+RUN yarn workspaces focus && yarn build && yarn workspaces focus --production && yarn cache clean --all
 
 FROM public.ecr.aws/lambda/nodejs:14
 

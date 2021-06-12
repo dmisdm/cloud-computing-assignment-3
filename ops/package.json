@@ -5,28 +5,29 @@
     "compile": "tsc"
   },
   "devDependencies": {
-    "@types/glob": "^7",
-    "@types/node": "^15.12.1",
-    "@types/shelljs": "^0",
-    "aws-cdk": "1.107.0",
-    "ts-node": "^9.0.0",
-    "typescript": "~3.9.7"
+    "@types/glob": "^7.1.3",
+    "@types/node": "^15.12.2",
+    "@types/shelljs": "^0.8.8",
+    "aws-cdk": "1.108.1",
+    "ts-node": "^10.0.0",
+    "typescript": "~4.3.2"
   },
   "dependencies": {
-    "@aws-cdk/aws-apigateway": "^1.107.0",
-    "@aws-cdk/aws-ec2": "^1.107.0",
-    "@aws-cdk/aws-ecr": "^1.107.0",
-    "@aws-cdk/aws-ecs": "^1.107.0",
-    "@aws-cdk/aws-elasticbeanstalk": "^1.108.0",
-    "@aws-cdk/aws-elasticloadbalancingv2": "^1.107.0",
-    "@aws-cdk/aws-iam": "^1.107.0",
-    "@aws-cdk/aws-lambda": "^1.108.0",
-    "@aws-cdk/aws-rds": "^1.107.0",
-    "@aws-cdk/aws-s3": "^1.107.0",
-    "@aws-cdk/core": "1.107.0",
+    "@aws-cdk/aws-apigateway": "^1.108.1",
+    "@aws-cdk/aws-ec2": "^1.108.1",
+    "@aws-cdk/aws-ecr": "^1.108.1",
+    "@aws-cdk/aws-ecr-assets": "^1.108.1",
+    "@aws-cdk/aws-ecs": "^1.108.1",
+    "@aws-cdk/aws-elasticbeanstalk": "^1.108.1",
+    "@aws-cdk/aws-elasticloadbalancingv2": "^1.108.1",
+    "@aws-cdk/aws-iam": "^1.108.1",
+    "@aws-cdk/aws-lambda": "^1.108.1",
+    "@aws-cdk/aws-rds": "^1.108.1",
+    "@aws-cdk/aws-s3": "^1.108.1",
+    "@aws-cdk/core": "1.108.1",
     "glob": "^7.1.7",
     "lambda-zip": "^0.3.2",
     "shelljs": "^0.8.4",
-    "source-map-support": "^0.5.16"
+    "source-map-support": "^0.5.19"
   }
 }

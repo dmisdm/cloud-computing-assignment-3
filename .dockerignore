@@ -1,3 +1,14 @@
 cdk*
 ops/cdk.out
-node_modules
+**/node_modules/**/*
+.yarn/cache
+.yarn/unplugged
+.yarn/install-state.gz
+.yarn/build-state.yml
+bundle.zip
+server/dist
+web/dist
+**/*.DS_Store
+**/*.dockerignore
+**/Dockerfile
+**/*.Dockerfile

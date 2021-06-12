@@ -2,24 +2,38 @@
   "comment": "This is an auto-generated file, it keeps track of whats been built. This is a local file, don't store this in version control.",
   "packages": {
     "ops#build": {
-      "lastModified": 1623329237600.2563,
+      "lastModified": 1623422799764.5022,
       "status": "succeeded",
       "haveCheckedForRerun": false,
       "rerun": true,
       "command": "build"
     },
     "server#build": {
-      "lastModified": 1623338822495.2776,
-      "status": "succeeded",
-      "haveCheckedForRerun": true,
-      "rerun": false,
-      "command": "build"
-    },
-    "web#build": {
-      "lastModified": 1623329936935.2454,
+      "lastModified": 1623468720442.337,
       "status": "succeeded",
       "haveCheckedForRerun": false,
       "rerun": true,
+      "command": "build"
+    },
+    "web#build": {
+      "lastModified": 1623468872918.0115,
+      "status": "succeeded",
+      "haveCheckedForRerun": false,
+      "rerun": true,
+      "command": "build"
+    },
+    "analytics#build": {
+      "lastModified": 1623465238898.8247,
+      "status": "succeeded",
+      "haveCheckedForRerun": false,
+      "rerun": true,
+      "command": "build"
+    },
+    "prisma-client#build": {
+      "lastModified": 1623472305295.8757,
+      "status": "succeeded",
+      "haveCheckedForRerun": true,
+      "rerun": false,
       "command": "build"
     }
   }

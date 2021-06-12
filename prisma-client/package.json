@@ -1,0 +1,16 @@
+{
+  "name": "prisma-client",
+  "main": "./client/index.js",
+  "types": "./client/index.d.ts",
+  "scripts": {
+    "build": "yarn prisma generate"
+  },
+  "devDependencies": {
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "@types/node": "^15.12.2",
+    "prisma": "^2.24.1"
+  }
+}

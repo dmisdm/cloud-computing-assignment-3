@@ -1,28 +1,31 @@
 import * as ec2 from "@aws-cdk/aws-ec2";
-import { InstanceType, SubnetType } from "@aws-cdk/aws-ec2";
+import { InstanceType, SecurityGroup, SubnetType, Vpc } from "@aws-cdk/aws-ec2";
+import { Repository } from "@aws-cdk/aws-ecr";
 import * as ecs from "@aws-cdk/aws-ecs";
-import { EcrImage } from "@aws-cdk/aws-ecs";
+import { EcrImage, Secret } from "@aws-cdk/aws-ecs";
 import * as elb from "@aws-cdk/aws-elasticloadbalancingv2";
+import { ApplicationLoadBalancer } from "@aws-cdk/aws-elasticloadbalancingv2";
+import * as iam from "@aws-cdk/aws-iam";
 import * as rds from "@aws-cdk/aws-rds";
 import { DatabaseInstanceEngine } from "@aws-cdk/aws-rds";
-import * as cdk from "@aws-cdk/core";
-import * as path from "path";
-import * as iam from "@aws-cdk/aws-iam";
-import { DockerImage, Duration } from "@aws-cdk/core";
-import * as lambda from "@aws-cdk/aws-lambda";
-import * as apigateway from "@aws-cdk/aws-apigateway";
-import * as elasticbeanstalk from "@aws-cdk/aws-elasticbeanstalk";
-import * as s3assets from "@aws-cdk/aws-s3-assets";
 import * as s3 from "@aws-cdk/aws-s3";
-import { exec } from "shelljs";
+import { Bucket, BucketAccessControl } from "@aws-cdk/aws-s3";
+import * as cdk from "@aws-cdk/core";
+import { Duration, Fn } from "@aws-cdk/core";
 import { fromRoot } from "./utils";
-import { BucketAccessControl } from "@aws-cdk/aws-s3";
-import { ApplicationLoadBalancer } from "@aws-cdk/aws-elasticloadbalancingv2";
-import { Effect } from "@aws-cdk/aws-iam";
 
 export class BackendStack extends cdk.Stack {
   alb: ApplicationLoadBalancer;
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+  vpc: Vpc;
+  serviceSecurityGroup: SecurityGroup;
+  publicationsBucket: Bucket;
+  databaseSecretName: string;
+  constructor(
+    scope: cdk.Construct,
+    id: string,
+    { backendImageTag }: { backendImageTag?: string },
+    props?: cdk.StackProps
+  ) {
     super(scope, id, props);
     const internalTrafficSubnetName = "internal-traffic";
     const fromInternetSubnetName = "from-internet";
@@ -41,6 +44,7 @@ export class BackendStack extends cdk.Stack {
         },
       ],
     });
+    this.vpc = vpc;
 
     const database = new rds.DatabaseInstance(this, "database", {
       vpc,
@@ -55,20 +59,25 @@ export class BackendStack extends cdk.Stack {
         subnetType: SubnetType.PRIVATE,
       }),
     });
+    const secretNameParts = Fn.split("-", database.secret?.secretName!);
+    const secretNameWithoutSuffix = Fn.join("-", [
+      Fn.select(0, secretNameParts),
+      Fn.select(1, secretNameParts),
+    ]);
+    this.databaseSecretName = secretNameWithoutSuffix;
 
     const publicationsBucket = new s3.Bucket(this, "Publications", {
       bucketName: "cloud-computing-assignment-3-publications",
       accessControl: BucketAccessControl.PUBLIC_READ,
       publicReadAccess: true,
       versioned: false,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
+
+    this.publicationsBucket = publicationsBucket;
 
     const cluster = new ecs.Cluster(this, "BackendCluster", {
       vpc: vpc,
-    });
-
-    const serverImage = EcrImage.fromAsset(fromRoot("."), {
-      file: "server/Dockerfile",
     });
 
     const taskRole = new iam.Role(this, "NodeJSServerTaskRole", {
@@ -98,6 +107,20 @@ export class BackendStack extends cdk.Stack {
         taskRole,
       }
     );
+
+    const serverImage = backendImageTag
+      ? EcrImage.fromEcrRepository(
+          Repository.fromRepositoryName(
+            this,
+            "ECR Repo Image",
+            "aws-cdk/assets"
+          ),
+          backendImageTag
+        )
+      : EcrImage.fromAsset(fromRoot("."), {
+          file: "server/Dockerfile",
+        });
+
     const nodejsServerContainer = nodejsServerTask.addContainer(
       "nodejs-server",
       {
@@ -114,6 +137,7 @@ export class BackendStack extends cdk.Stack {
       }
     );
 
+    publicationsBucket.grantReadWrite(taskRole);
     database.secret!.grantRead(taskRole);
 
     nodejsServerContainer.addPortMappings({
@@ -128,6 +152,8 @@ export class BackendStack extends cdk.Stack {
         allowAllOutbound: true,
       }
     );
+
+    this.serviceSecurityGroup = serviceSecurityGroup;
 
     database.connections.allowFrom(serviceSecurityGroup, ec2.Port.tcp(5432));
 
@@ -148,62 +174,6 @@ export class BackendStack extends cdk.Stack {
 
     albSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(80));
     albSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(443));
-
-    const lambdaRole = new iam.Role(this, "UploaderLambdaRole", {
-      roleName: "UploaderLambdaRole",
-      assumedBy: new iam.ServicePrincipal("lambda.amazonaws.com"),
-      managedPolicies: [
-        iam.ManagedPolicy.fromAwsManagedPolicyName(
-          "service-role/AWSLambdaBasicExecutionRole"
-        ),
-        iam.ManagedPolicy.fromAwsManagedPolicyName(
-          "service-role/AWSLambdaVPCAccessExecutionRole"
-        ),
-      ],
-    });
-    /*     const uploaderLambda = new lambda.Function(this, "UploaderLambda", {
-      role: lambdaRole,
-      runtime: lambda.Runtime.NODEJS_14_X,
-      code: new lambda.AssetCode(fromRoot(".")),
-      handler: "server/dist/lambda.handler",
-      securityGroups: [serviceSecurityGroup],
-    }); */
-    const uploaderLambda = new lambda.DockerImageFunction(
-      this,
-      "UploaderLambda",
-      {
-        vpc,
-        vpcSubnets: vpc.selectSubnets({
-          subnetType: SubnetType.PRIVATE,
-        }),
-        role: lambdaRole,
-        securityGroups: [serviceSecurityGroup],
-        code: lambda.DockerImageCode.fromImageAsset(fromRoot("."), {
-          file: "server/lambda.Dockerfile",
-        }),
-        environment: {
-          NODE_ENV: "production",
-          ARTICLES_BUCKET: publicationsBucket.bucketName,
-          POSTGRES_SECRET_ARN: database.secret!.secretName,
-        },
-      }
-    );
-
-    lambdaRole.addToPolicy(
-      new iam.PolicyStatement({
-        effect: iam.Effect.ALLOW,
-        resources: ["*"],
-        actions: ["secretsmanager:GetSecretValue"],
-      })
-    );
-
-    database.secret!.grantRead(uploaderLambda);
-
-    const lambdaEndpoint = new apigateway.LambdaRestApi(
-      this,
-      "UploaderLambdaRestApi",
-      { handler: uploaderLambda }
-    );
 
     const targetGroup = new elb.ApplicationTargetGroup(
       this,
