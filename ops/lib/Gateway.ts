@@ -33,11 +33,11 @@ export class GatewayStack extends cdk.Stack {
     });
 
     const fargateServiceIntegration = new HttpProxyIntegration({
-      url: backendLoadBalancerEndpoint,
+      url: `${backendLoadBalancerEndpoint}/api/{proxy}`,
     });
     api.addRoutes({
       integration: fargateServiceIntegration,
-      path: "/api",
+      path: "/api/{proxy+}",
       methods: [apigateway.HttpMethod.ANY],
     });
     api.addRoutes({
