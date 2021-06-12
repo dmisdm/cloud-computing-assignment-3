@@ -59,6 +59,6 @@ const gateway = new GatewayStack(
 new FrontendStack(
   app,
   "FrontendStack",
-  { backendUrl: gateway.api.url },
+  { backendUrl: gateway.api.url! },
   envOptions
 );

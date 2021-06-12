@@ -1,10 +1,13 @@
 import * as cdk from "@aws-cdk/core";
-import * as apigateway from "@aws-cdk/aws-apigateway";
+import * as apigateway from "@aws-cdk/aws-apigatewayv2";
+import {
+  LambdaProxyIntegration,
+  HttpProxyIntegration,
+} from "@aws-cdk/aws-apigatewayv2-integrations";
 import { Function } from "@aws-cdk/aws-lambda";
-import { FargateService } from "@aws-cdk/aws-ecs";
-import { RestApi } from "@aws-cdk/aws-apigateway";
+
 export class GatewayStack extends cdk.Stack {
-  api: RestApi;
+  api: apigateway.HttpApi;
   constructor(
     scope: cdk.Construct,
     id: string,
@@ -16,33 +19,31 @@ export class GatewayStack extends cdk.Stack {
   ) {
     super(scope, id, props);
 
-    const api = new apigateway.RestApi(this, "BackendFederatedApi", {
-      restApiName: "Backend",
+    const api = new apigateway.HttpApi(this, "BackendFederatedApi", {
+      createDefaultStage: true,
+      apiName: "Backend",
       description:
         "The API that federates every other backend/api within our stack into one",
     });
 
     this.api = api;
 
-    const lambdaIntegration = new apigateway.LambdaIntegration(backendLambda, {
-      requestTemplates: { "application/json": '{ "statusCode": "200" }' },
+    const lambdaIntegration = new LambdaProxyIntegration({
+      handler: backendLambda,
     });
 
-    const fargateServiceIntegration = new apigateway.HttpIntegration(
-      backendLoadBalancerEndpoint,
-      { proxy: true }
-    );
-    const rootApiResource = api.root.addResource("api");
-    const rootProxyMethod = rootApiResource.addProxy({
-      anyMethod: true,
-      defaultIntegration: fargateServiceIntegration,
+    const fargateServiceIntegration = new HttpProxyIntegration({
+      url: backendLoadBalancerEndpoint,
     });
-    const publishArticleResource = rootApiResource
-      .addResource("articles")
-      .addResource("publish");
-    const publishArticleMethod = publishArticleResource.addMethod(
-      "POST",
-      lambdaIntegration
-    );
+    api.addRoutes({
+      integration: fargateServiceIntegration,
+      path: "/api",
+      methods: [apigateway.HttpMethod.ANY],
+    });
+    api.addRoutes({
+      integration: lambdaIntegration,
+      path: "/api/articles/publish",
+      methods: [apigateway.HttpMethod.ANY],
+    });
   }
 }

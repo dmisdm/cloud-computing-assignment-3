@@ -2,6 +2,7 @@ import { SecurityGroup, SubnetType, Vpc } from "@aws-cdk/aws-ec2";
 import * as iam from "@aws-cdk/aws-iam";
 import * as lambda from "@aws-cdk/aws-lambda";
 import * as cdk from "@aws-cdk/core";
+import { Duration } from "@aws-cdk/core";
 import { fromRoot } from "./utils";
 
 export class LambdaFunctionsStack extends cdk.Stack {
@@ -56,6 +57,7 @@ export class LambdaFunctionsStack extends cdk.Stack {
           ARTICLES_BUCKET: publicationsBucketName,
           POSTGRES_SECRET_ARN: databaseSecretName,
         },
+        timeout: Duration.seconds(15),
       }
     );
 

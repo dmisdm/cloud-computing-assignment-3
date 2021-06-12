@@ -120,6 +120,52 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@aws-cdk/aws-apigatewayv2-integrations@npm:^1.108.1":
+  version: 1.108.1
+  resolution: "@aws-cdk/aws-apigatewayv2-integrations@npm:1.108.1"
+  dependencies:
+    "@aws-cdk/aws-apigatewayv2": 1.108.1
+    "@aws-cdk/aws-ec2": 1.108.1
+    "@aws-cdk/aws-elasticloadbalancingv2": 1.108.1
+    "@aws-cdk/aws-iam": 1.108.1
+    "@aws-cdk/aws-lambda": 1.108.1
+    "@aws-cdk/aws-servicediscovery": 1.108.1
+    "@aws-cdk/core": 1.108.1
+    constructs: ^3.3.69
+  peerDependencies:
+    "@aws-cdk/aws-apigatewayv2": 1.108.1
+    "@aws-cdk/aws-ec2": 1.108.1
+    "@aws-cdk/aws-elasticloadbalancingv2": 1.108.1
+    "@aws-cdk/aws-iam": 1.108.1
+    "@aws-cdk/aws-lambda": 1.108.1
+    "@aws-cdk/aws-servicediscovery": 1.108.1
+    "@aws-cdk/core": 1.108.1
+    constructs: ^3.3.69
+  checksum: 88e854deafb8abf5c2e223d248e11d98c9f474459213e3036427c924a4d266d78d38b0be7e8c85b6ca73a309fd7d51910945c95a68d1b4c1f0da905e66595a4c
+  languageName: node
+  linkType: hard
+
+"@aws-cdk/aws-apigatewayv2@npm:1.108.1, @aws-cdk/aws-apigatewayv2@npm:^1.108.1":
+  version: 1.108.1
+  resolution: "@aws-cdk/aws-apigatewayv2@npm:1.108.1"
+  dependencies:
+    "@aws-cdk/aws-certificatemanager": 1.108.1
+    "@aws-cdk/aws-cloudwatch": 1.108.1
+    "@aws-cdk/aws-ec2": 1.108.1
+    "@aws-cdk/aws-iam": 1.108.1
+    "@aws-cdk/core": 1.108.1
+    constructs: ^3.3.69
+  peerDependencies:
+    "@aws-cdk/aws-certificatemanager": 1.108.1
+    "@aws-cdk/aws-cloudwatch": 1.108.1
+    "@aws-cdk/aws-ec2": 1.108.1
+    "@aws-cdk/aws-iam": 1.108.1
+    "@aws-cdk/core": 1.108.1
+    constructs: ^3.3.69
+  checksum: cb3beea79934cabb6984a11859edb7062f0f8cef376b95b9df950193f821229b9c602534058de13a1531a58be740619a42ab37a4c98115861f2fad19f737c8a5
+  languageName: node
+  linkType: hard
+
 "@aws-cdk/aws-applicationautoscaling@npm:1.108.1":
   version: 1.108.1
   resolution: "@aws-cdk/aws-applicationautoscaling@npm:1.108.1"
@@ -7530,6 +7576,8 @@ fsevents@~2.3.1:
   resolution: "ops@workspace:ops"
   dependencies:
     "@aws-cdk/aws-apigateway": ^1.108.1
+    "@aws-cdk/aws-apigatewayv2": ^1.108.1
+    "@aws-cdk/aws-apigatewayv2-integrations": ^1.108.1
     "@aws-cdk/aws-ec2": ^1.108.1
     "@aws-cdk/aws-ecr": ^1.108.1
     "@aws-cdk/aws-ecr-assets": ^1.108.1
