@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-06-13T06:56:00.602Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="u7lpDceBzgMA7VRctT2R" version="14.4.8" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-13T06:57:49.530Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="JEsYhHIbjSe2mnxkY1eI" version="14.4.8" type="github">
   <diagram id="6AhbfbZRLbzXQU_2mes7" name="Page-1">
     <mxGraphModel dx="3351" dy="2713" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -137,8 +137,8 @@
         <mxCell id="X5J0RskGUfn2iMmxmOIG-74" value="Orchestration" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=24;fontFamily=PT Mono;fontColor=#232F3E;" parent="1" vertex="1">
           <mxGeometry x="1430" y="-430" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="wa0tHppYLoDH_IEBGXLA-1" value="WWW" style="aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image;image=img/lib/active_directory/internet_globe.svg;labelBackgroundColor=#ffffff;strokeColor=#000000;fillColor=none;gradientColor=#4D72F3;fontFamily=PT Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPT%2BMono;fontSize=24;fontColor=#232F3E;" vertex="1" parent="1">
-          <mxGeometry x="814" y="-814" width="88" height="88" as="geometry" />
+        <mxCell id="wa0tHppYLoDH_IEBGXLA-3" value="WWW" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.internet_gateway;fillColor=#F58534;gradientColor=none;labelBackgroundColor=#ffffff;strokeColor=#000000;fontFamily=PT Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DPT%2BMono;fontSize=24;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="815.79" y="-820" width="82.42" height="86" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
