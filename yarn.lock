@@ -2811,6 +2811,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nestjs/mapped-types@npm:0.4.0":
+  version: 0.4.0
+  resolution: "@nestjs/mapped-types@npm:0.4.0"
+  peerDependencies:
+    "@nestjs/common": ^7.0.8
+    class-transformer: ^0.2.0 || ^0.3.0 || ^0.4.0
+    class-validator: ^0.11.1 || ^0.12.0 || ^0.13.0
+    reflect-metadata: ^0.1.12
+  checksum: fbeb2864bb2b7636868525d9f317b5442acddd8e0d5d81880a2d0a117c51b631aa2a4008e5a690c0df321cb4ff7dfecf196defb4e44472281163772371fe0f90
+  languageName: node
+  linkType: hard
+
 "@nestjs/passport@npm:^7.1.5":
   version: 7.1.5
   resolution: "@nestjs/passport@npm:7.1.5"
@@ -2849,6 +2861,28 @@ __metadata:
   peerDependencies:
     typescript: ^3.4.5 || ^4.0.0
   checksum: f827f15d970512f1991d1b0957f7db753165eca56eea818a42337fa800e1403faa2932592f221863f52b2cc76dedd4c4832e797e25002ccfb7815becb31345c7
+  languageName: node
+  linkType: hard
+
+"@nestjs/swagger@npm:^4.8.0":
+  version: 4.8.0
+  resolution: "@nestjs/swagger@npm:4.8.0"
+  dependencies:
+    "@nestjs/mapped-types": 0.4.0
+    lodash: 4.17.21
+    path-to-regexp: 3.2.0
+  peerDependencies:
+    "@nestjs/common": ^6.8.0 || ^7.0.0
+    "@nestjs/core": ^6.8.0 || ^7.0.0
+    fastify-swagger: "*"
+    reflect-metadata: ^0.1.12
+    swagger-ui-express: "*"
+  peerDependenciesMeta:
+    fastify-swagger:
+      optional: true
+    swagger-ui-express:
+      optional: true
+  checksum: 7d4a65211b39fd70659ff6d0c8950ee62c9949dd7d504770d7dd80de4e05fa8d5f34d2f5306c84e7cf474945ab3983a9a66966e2df0b78aef166c66e70e1cc04
   languageName: node
   linkType: hard
 
@@ -3403,6 +3437,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/swagger-ui-express@npm:^4":
+  version: 4.1.2
+  resolution: "@types/swagger-ui-express@npm:4.1.2"
+  dependencies:
+    "@types/express": "*"
+    "@types/serve-static": "*"
+  checksum: 999c83bffaa70fb63af7619ccb7bb3b26f15eff6f335b34b8a625bb7d234e5fe9ec2292f052cc3be77c9e21175313fecacad4e1ad49ee74fef46c36566e4e790
+  languageName: node
+  linkType: hard
+
 "@types/url-parse@npm:^1.4.3":
   version: 1.4.3
   resolution: "@types/url-parse@npm:1.4.3"
@@ -3891,11 +3935,9 @@ __metadata:
     "@aws-sdk/client-s3": ^3.18.0
     "@aws-sdk/client-secrets-manager": ^3.18.0
     "@types/node": ^15.12.2
-    "@types/pg": ^8.6.0
     "@types/shelljs": ^0.8.8
     "@types/yargs": ^17.0.0
     shelljs: ^0.8.4
-    superstruct: ^0.15.2
     ts-node: ^10.0.0
     typescript: ^4.3.2
     yargs: ^17.0.1
@@ -7194,7 +7236,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.14, lodash@npm:^4.17.19, lodash@npm:^4.17.21, lodash@npm:^4.8.0":
+"lodash@npm:4.17.21, lodash@npm:^4.17.14, lodash@npm:^4.17.19, lodash@npm:^4.17.21, lodash@npm:^4.8.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 4983720b9abca930a4a46f18db163d7dad8dd00dbed6db0cc7b499b33b717cce69f80928b27bbb1ff2cbd3b19d251ee90669a8b5ea466072ca81c2ebe91e7468
@@ -9131,6 +9173,7 @@ fsevents@~2.3.1:
     "@nestjs/passport": ^7.1.5
     "@nestjs/platform-express": ^7.6.17
     "@nestjs/schematics": ^7.3.1
+    "@nestjs/swagger": ^4.8.0
     "@nestjs/terminus": ^7.2.0
     "@types/aws-lambda": ^8.10.77
     "@types/aws-serverless-express": ^3.3.3
@@ -9143,6 +9186,7 @@ fsevents@~2.3.1:
     "@types/passport-jwt": ^3.0.5
     "@types/passport-local": ^1.0.33
     "@types/pg": ^8.6.0
+    "@types/swagger-ui-express": ^4
     "@types/url-parse": ^1.4.3
     "@types/uuid": ^8.3.0
     "@types/yargs": ^17.0.0
@@ -9177,6 +9221,7 @@ fsevents@~2.3.1:
     run-script-webpack-plugin: ^0.0.11
     rxjs: ^6.6.7
     superstruct: ^0.15.2
+    swagger-ui-express: ^4.1.6
     ts-loader: ^9.2.3
     ts-node: ^10.0.0
     tsconfig-paths: ^3.9.0
@@ -9532,6 +9577,24 @@ fsevents@~2.3.1:
   dependencies:
     has-flag: ^4.0.0
   checksum: 0219f5c91753fea8dc8046cd4b18d39458b5dc0c6421c67c1072209faae9ba93b89283252e3b05d5c18901fd9f8b95001e3247fb93e2265f66d584a676522c75
+  languageName: node
+  linkType: hard
+
+"swagger-ui-dist@npm:^3.18.1":
+  version: 3.50.0
+  resolution: "swagger-ui-dist@npm:3.50.0"
+  checksum: fa205e1dbddcc6b3b5b6abf7475c041f1fbaa748f84a9c8ae080f87db6e8ed45535a389b12bdc725c9c2d8655ee740c9aa4884e32ea720ee2c506a997087e789
+  languageName: node
+  linkType: hard
+
+"swagger-ui-express@npm:^4.1.6":
+  version: 4.1.6
+  resolution: "swagger-ui-express@npm:4.1.6"
+  dependencies:
+    swagger-ui-dist: ^3.18.1
+  peerDependencies:
+    express: ">=4.0.0"
+  checksum: ded7c3cc5da2b0f1e10c5ed50787ef7531305cb66c796decfb4956c9f09a636a65967c1dfe341ebda2efb716bb81e57e6cf5051c073a02e403b22210d803030a
   languageName: node
   linkType: hard
 

@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  Body,
   Controller,
   Get,
   Post,
@@ -69,11 +70,6 @@ export class AppController {
   @Get('auth/me')
   async me(@Req() request: Request): Promise<typeof UserDTO.TYPE> {
     return UserDTO.create(request.user);
-  }
-
-  @Get('/removeme')
-  async test() {
-    return process.env;
   }
 
   @Get('/most-frequent-search-terms')
