@@ -199,8 +199,9 @@ export class BackendStack extends cdk.Stack {
         deregistrationDelay: Duration.seconds(1),
         healthCheck: {
           path: "/api/health",
-          timeout: Duration.seconds(15),
-          interval: Duration.seconds(16),
+          timeout: Duration.seconds(30),
+          interval: Duration.seconds(45),
+          unhealthyThresholdCount: 3,
         },
       }
     );
