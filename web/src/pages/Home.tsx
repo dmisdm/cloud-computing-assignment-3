@@ -138,7 +138,7 @@ export function HomePage() {
       {viewingArticle && (
         <ArticleViewerModal
           onClose={() => setViewingArticle(undefined)}
-          article={viewingArticle}
+          articleId={viewingArticle.id}
         />
       )}
       <NavBar />

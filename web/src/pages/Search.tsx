@@ -7,6 +7,7 @@ import {
   Divider,
   Grid,
   IconButton,
+  Link,
   TextField,
   Tooltip,
   Typography,
@@ -24,9 +25,11 @@ import FuzzySearch from "fuzzy-search";
 import React from "react";
 import {
   AggregatedSearchResults,
+  Article,
   Like,
   SearchResults,
 } from "server/src/models";
+import { ArticleViewerModal } from "src/components/ArticleViewerModal";
 import { NavBar } from "src/components/NavBar";
 import { Padding } from "src/components/Padding";
 import { useBookmark, useBookmarks, useUnbookmark } from "src/state/Article";
@@ -71,6 +74,8 @@ export function SearchPage() {
     queryParam || ""
   );
 
+  const [selectedArticle, setSelectedArticle] =
+    React.useState<typeof Article.TYPE>();
   const search = useSearch(
     { query: lastSubmittedQuery },
     {
@@ -97,6 +102,12 @@ export function SearchPage() {
   );
   return (
     <>
+      {selectedArticle && (
+        <ArticleViewerModal
+          onClose={() => setSelectedArticle(undefined)}
+          articleId={selectedArticle.id}
+        />
+      )}
       <NavBar />
 
       <Container maxWidth="md">
@@ -155,7 +166,11 @@ export function SearchPage() {
             >
               <Grid container>
                 <Grid xs={11} item>
-                  <Typography variant="h4">{result.title}</Typography>
+                  <Typography variant="h4">
+                    <Link href="#" onClick={() => setSelectedArticle(result)}>
+                      {result.title}
+                    </Link>
+                  </Typography>
                   <Padding size={0.5} />
                   <Chip label={result.source} />
                 </Grid>

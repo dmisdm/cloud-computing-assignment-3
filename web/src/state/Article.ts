@@ -8,6 +8,7 @@ import {
   optional,
   instance,
   unknown,
+  nullable,
 } from "superstruct";
 import { makeMutator, makeQuerier } from "./common";
 import { queryClient } from "./queryClient";
@@ -111,4 +112,13 @@ export const useAddComment = makeMutator({
   resultStruct: Comment,
   key: "addComment",
   url: "/api/articles/add-comment",
+});
+
+export const useArticle = makeQuerier({
+  paramsStruct: type({
+    id: string(),
+  }),
+  resultStruct: optional(nullable(Article)),
+  key: "article",
+  url: "/api/articles",
 });

@@ -3,7 +3,9 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
+  Query,
   Req,
   UploadedFile,
   UseGuards,
@@ -216,6 +218,22 @@ export class ArticlesController {
         source: 'User',
         summary: body.summary,
         title: body.title,
+      },
+    });
+  }
+
+  @Get()
+  async getArticle(@Req() request: Request, @Query('id') articleId: string) {
+    try {
+      await this.articlesProvider.syncArticles([articleId]);
+    } catch (e) {}
+    return this.database.prismaClient.article.findUnique({
+      where: {
+        id: articleId,
+      },
+      include: {
+        authors: true,
+        arxivArticle: true,
       },
     });
   }
