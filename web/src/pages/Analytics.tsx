@@ -42,7 +42,13 @@ export function AnalyticsPage() {
         <Padding size={2} />
         <Box display="flex" justifyContent="center">
           {state.data && state.data.length ? (
-            <BarChart width={1000} height={350} data={state.data}>
+            <BarChart
+              width={1000}
+              height={350}
+              data={state.data
+                .sort((a, z) => z.frequency - a.frequency)
+                .slice(0, 10)}
+            >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="term" />
               <YAxis />
