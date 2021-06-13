@@ -34,7 +34,7 @@ export async function run({
     region: awsRegion,
   });
   const result = await emrClient.runJobFlow({
-    Name: "Test",
+    Name: "ComputeAnalytics",
     ServiceRole: "EMR_DefaultRole",
     JobFlowRole: "EMR_EC2_DefaultRole",
     ScaleDownBehavior: "TERMINATE_AT_TASK_COMPLETION",

@@ -30,6 +30,8 @@ export class BackendStack extends cdk.Stack {
     super(scope, id, props);
     const internalTrafficSubnetName = "internal-traffic";
     const fromInternetSubnetName = "from-internet";
+
+    // The VPC that will contain the ECS service and RDS.
     const vpc = new ec2.Vpc(this, "MainVPC", {
       maxAzs: 2,
       subnetConfiguration: [
@@ -45,8 +47,10 @@ export class BackendStack extends cdk.Stack {
         },
       ],
     });
+
     this.vpc = vpc;
 
+    //The cheapest Postgres RDS instance.
     const database = new rds.DatabaseInstance(this, "database", {
       vpc,
       instanceType: new InstanceType("t3.micro"),
@@ -60,6 +64,9 @@ export class BackendStack extends cdk.Stack {
         subnetType: SubnetType.PRIVATE,
       }),
     });
+
+    // Here we select only a few parts of the database secret to extract it's name.
+    // Unfortunately, database.secret.secretName contains an unneeded suffix that causes errors otherwise.
     const secretNameParts = Fn.split("-", database.secret?.secretName!);
     const secretNameWithoutSuffix = Fn.join("-", [
       Fn.select(0, secretNameParts),
@@ -67,6 +74,7 @@ export class BackendStack extends cdk.Stack {
     ]);
     this.databaseSecretName = secretNameWithoutSuffix;
 
+    // The S3 bucket to support publication uploading
     const publicationsBucket = new s3.Bucket(this, "Publications", {
       bucketName: "cloud-computing-assignment-3-publications",
       accessControl: BucketAccessControl.PUBLIC_READ,
@@ -75,6 +83,7 @@ export class BackendStack extends cdk.Stack {
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
 
+    // The S3 bucket to support analytics
     const analyticsBucket = new s3.Bucket(this, "EMRAnalytics", {
       bucketName: "cloud-computing-assignment-3-analytics",
       versioned: false,
@@ -89,6 +98,7 @@ export class BackendStack extends cdk.Stack {
       vpc: vpc,
     });
 
+    // The ECS task role. We need the base policy, plus the ability to get the databse secret, and to execute EMR tasks at runtime.
     const taskRole = new iam.Role(this, "NodeJSServerTaskRole", {
       roleName: "NodeJSServerTaskRole",
       assumedBy: new iam.ServicePrincipal("ecs-tasks.amazonaws.com"),
@@ -120,18 +130,10 @@ export class BackendStack extends cdk.Stack {
       }
     );
 
-    const serverImage = backendImageTag
-      ? EcrImage.fromEcrRepository(
-          Repository.fromRepositoryName(
-            this,
-            "ECR Repo Image",
-            "aws-cdk/assets"
-          ),
-          backendImageTag
-        )
-      : EcrImage.fromAsset(fromRoot("."), {
-          file: "server/Dockerfile",
-        });
+    // This construct will build the specified Dockerfile and upload it to ECR automatically.
+    const serverImage = EcrImage.fromAsset(fromRoot("."), {
+      file: "server/Dockerfile",
+    });
 
     const nodejsServerContainer = nodejsServerTask.addContainer(
       "nodejs-server",
@@ -150,6 +152,7 @@ export class BackendStack extends cdk.Stack {
       }
     );
 
+    // Grant additional permissions so that the buckets and database secret can be read from/written to.
     publicationsBucket.grantReadWrite(taskRole);
     analyticsBucket.grantReadWrite(taskRole);
     database.secret!.grantRead(taskRole);
@@ -158,6 +161,8 @@ export class BackendStack extends cdk.Stack {
       containerPort: 80,
     });
 
+    // The security group attached to the ECS service.
+    // We need this so that we can tell the database to allow traffic from it - the Nodejs server.
     const serviceSecurityGroup = new ec2.SecurityGroup(
       this,
       "ServiceSecurityGroup",
@@ -169,6 +174,7 @@ export class BackendStack extends cdk.Stack {
 
     this.serviceSecurityGroup = serviceSecurityGroup;
 
+    // Allow the nodejs server to communicate with the database.
     database.connections.allowFrom(serviceSecurityGroup, ec2.Port.tcp(5432));
 
     const service = new ecs.FargateService(this, "BackendService", {
@@ -186,9 +192,12 @@ export class BackendStack extends cdk.Stack {
       { vpc }
     );
 
+    // Expose the ECS service's load balancer.
     albSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(80));
     albSecurityGroup.connections.allowFromAnyIpv4(ec2.Port.tcp(443));
 
+    // The ECS target group that tells the load balancer where to direct traffic to, and what nodes it can load balance over.
+    // In this case, we only have a single instance, so there is no load balancing, but there is still an ALB that exposes the service.
     const targetGroup = new elb.ApplicationTargetGroup(
       this,
       "ServerTargetGroup",
@@ -205,6 +214,7 @@ export class BackendStack extends cdk.Stack {
         },
       }
     );
+
     const alb = new elb.ApplicationLoadBalancer(this, "BackendALB", {
       vpc,
       securityGroup: albSecurityGroup,
@@ -223,6 +233,7 @@ export class BackendStack extends cdk.Stack {
       targetGroups: [targetGroup],
     });
 
+    // Accept incoming connections from the ALB
     serviceSecurityGroup.connections.allowFrom(alb, ec2.Port.tcp(80));
 
     this.alb = alb;

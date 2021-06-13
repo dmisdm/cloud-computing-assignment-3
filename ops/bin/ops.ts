@@ -7,16 +7,6 @@ import { LambdaFunctionsStack } from "../lib/LambdaFunctions";
 import * as yargs from "yargs";
 import { GatewayStack } from "../lib/Gateway";
 
-const { backendImageTag } = yargs
-  .options({
-    backendImageTag: {
-      type: "string",
-      description: "Pass in a predefined ecr image tag rather than rebuilding",
-    },
-  })
-  .env()
-  .parseSync();
-
 const envOptions = {
   env: {
     account: "163565994931",
@@ -25,12 +15,7 @@ const envOptions = {
 };
 
 const app = new cdk.App();
-const backendStack = new BackendStack(
-  app,
-  "BackendStack",
-  { backendImageTag },
-  envOptions
-);
+const backendStack = new BackendStack(app, "BackendStack", {}, envOptions);
 const backendLoadBalancerEndpoint =
   "http://" + backendStack.alb.loadBalancerDnsName;
 

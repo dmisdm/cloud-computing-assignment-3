@@ -17,28 +17,32 @@ export class FrontendStack extends cdk.Stack {
       cwd: fromRoot("."),
     });
 
+    // The main EB application which other resources are added to.
     const frontend = new elasticbeanstalk.CfnApplication(this, "Frontend", {
       applicationName: "Frontend",
     });
 
+    // This construct allows us to automatically upload a zip file of our code, and reference it in subsequent constructs.
     const frontendAssets = new s3assets.Asset(this, "FrontendAssets", {
       path: fromRoot("bundle.zip"),
     });
 
     const platform = this.node.tryGetContext("platform");
 
+    // The description of where to find code assets (in this case, it is a zip file on S3)
     const latestFrontendVersion = new elasticbeanstalk.CfnApplicationVersion(
       this,
       "LatestFrontendVersion",
       {
         applicationName: "Frontend",
-
         sourceBundle: {
           s3Bucket: frontendAssets.s3BucketName,
           s3Key: frontendAssets.s3ObjectKey,
         },
       }
     );
+
+    // The IAM execution role. No special permissions are required for this role, as it isn't accessing any other private resources.
     const frontendRole = new iam.Role(this, `FrontendRole`, {
       assumedBy: new iam.ServicePrincipal("ec2.amazonaws.com"),
     });
@@ -52,7 +56,8 @@ export class FrontendStack extends cdk.Stack {
       instanceProfileName: profileName,
       roles: [frontendRole.roleName],
     });
-    latestFrontendVersion.addDependsOn(frontend);
+
+    // The EB environment which explains how to construct EC2 instances and run our application.
     const frontendEnvironment = new elasticbeanstalk.CfnEnvironment(
       this,
       "FrontendEnvironment",
@@ -82,6 +87,9 @@ export class FrontendStack extends cdk.Stack {
         ],
       }
     );
+
+    latestFrontendVersion.addDependsOn(frontend);
+
     frontendEnvironment.addDependsOn(latestFrontendVersion);
 
     frontendEnvironment.addDependsOn(frontend);

@@ -11,6 +11,11 @@ export class LambdaFunctionsStack extends cdk.Stack {
   constructor(
     scope: cdk.Construct,
     id: string,
+    // Here we accept dependencies:
+    // The backend VPC
+    // The backend service security group (we also use this for the lambda so that it has the same access within the VPC)
+    // Publications and analytics bucket.
+    // Database secret
     {
       vpc,
       serviceSecurityGroup,
@@ -28,6 +33,8 @@ export class LambdaFunctionsStack extends cdk.Stack {
   ) {
     super(scope, id, props);
 
+    // This lambda requires the same permissions as the ECS service
+    // Base execution role, EMR, database, and S3 bucket access
     const lambdaRole = new iam.Role(this, "UploaderLambdaRole", {
       roleName: "UploaderLambdaRole",
       assumedBy: new iam.ServicePrincipal("lambda.amazonaws.com"),
@@ -43,8 +50,26 @@ export class LambdaFunctionsStack extends cdk.Stack {
         ),
       ],
     });
+
+    // Give the lambda access to EMR and secrets manager (for the database secret)
+    lambdaRole.addToPolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        resources: ["*"],
+        actions: ["secretsmanager:GetSecretValue", "elasticmapreduce:*"],
+      })
+    );
+
     analyticsBucket.grantReadWrite(lambdaRole);
     publicationsBucket.grantReadWrite(lambdaRole);
+
+    // We are deploying a Docker container Lambda function.
+    // This construct builds a Dockerfile and uploads it to ECR automatically.
+    const lambdaCode = lambda.DockerImageCode.fromImageAsset(fromRoot("."), {
+      file: "server/lambda.Dockerfile",
+    });
+
+    // The main lambda definition which connects the other constructs.
     const uploaderLambda = new lambda.DockerImageFunction(
       this,
       "UploaderLambda",
@@ -57,9 +82,7 @@ export class LambdaFunctionsStack extends cdk.Stack {
         }),
         role: lambdaRole,
         securityGroups: [serviceSecurityGroup],
-        code: lambda.DockerImageCode.fromImageAsset(fromRoot("."), {
-          file: "server/lambda.Dockerfile",
-        }),
+        code: lambdaCode,
         environment: {
           NODE_ENV: "production",
           ARTICLES_BUCKET: publicationsBucket.bucketName,
@@ -68,14 +91,6 @@ export class LambdaFunctionsStack extends cdk.Stack {
         },
         timeout: Duration.seconds(15),
       }
-    );
-
-    lambdaRole.addToPolicy(
-      new iam.PolicyStatement({
-        effect: iam.Effect.ALLOW,
-        resources: ["*"],
-        actions: ["secretsmanager:GetSecretValue"],
-      })
     );
 
     this.function = uploaderLambda;

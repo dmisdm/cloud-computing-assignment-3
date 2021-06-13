@@ -74,8 +74,7 @@ export function SearchPage() {
     queryParam || ""
   );
 
-  const [selectedArticle, setSelectedArticle] =
-    React.useState<typeof Article.TYPE>();
+  const [selectedArticle, setSelectedArticle] = React.useState<string>();
   const search = useSearch(
     { query: lastSubmittedQuery },
     {
@@ -105,7 +104,7 @@ export function SearchPage() {
       {selectedArticle && (
         <ArticleViewerModal
           onClose={() => setSelectedArticle(undefined)}
-          articleId={selectedArticle.id}
+          articleId={selectedArticle}
         />
       )}
       <NavBar />
@@ -167,7 +166,10 @@ export function SearchPage() {
               <Grid container>
                 <Grid xs={11} item>
                   <Typography variant="h4">
-                    <Link href="#" onClick={() => setSelectedArticle(result)}>
+                    <Link
+                      href="#"
+                      onClick={() => setSelectedArticle(result.id)}
+                    >
                       {result.title}
                     </Link>
                   </Typography>

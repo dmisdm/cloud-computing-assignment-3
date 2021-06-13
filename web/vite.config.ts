@@ -5,7 +5,7 @@ declare var process: any;
 
 // https://vitejs.dev/config/
 const backendUrl = process.env.BACKEND_URL || "http://localhost:8080";
-console.log(`Forwarding /api to ${backendUrl}`);
+
 export default defineConfig({
   plugins: [reactRefresh(), tsconfigPaths()],
   define: {
