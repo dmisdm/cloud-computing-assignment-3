@@ -24,6 +24,12 @@ class ArticleLikeDTO {
   @IsNotEmpty()
   articleId!: string;
 }
+class ArticleAndCommentDTO {
+  @IsNotEmpty()
+  articleId!: string;
+  @IsNotEmpty()
+  comment!: string;
+}
 
 class ArticleCreateDTO {
   @IsNotEmpty()
@@ -106,6 +112,46 @@ export class ArticlesController {
       },
     });
   }
+  @Post('add-comment')
+  async addNote(
+    @Req() request: Request,
+    @Body() articleAndComment: ArticleAndCommentDTO,
+  ) {
+    const user = UserDTO.create(request.user);
+    const newcomment = await this.database.prismaClient.comment.create({
+      data: {
+        text: articleAndComment.comment,
+        articleId: articleAndComment.articleId,
+        authorId: user.id,
+      },
+      include: {
+        author: true,
+        article: {
+          include: {
+            authors: true,
+          },
+        },
+      },
+    });
+    return newcomment;
+  }
+  @Get('comments')
+  async getComments(@Req() request: Request) {
+    const user = UserDTO.create(request.user);
+    return this.database.prismaClient.comment.findMany({
+      where: {
+        authorId: user.id,
+      },
+      include: {
+        author: true,
+        article: {
+          include: {
+            authors: true,
+          },
+        },
+      },
+    });
+  }
 
   @Get('bookmarks')
   async getBookmarks(@Req() request: Request): Promise<Like[]> {
@@ -116,6 +162,7 @@ export class ArticlesController {
         article: {
           include: {
             authors: true,
+            arxivArticle: true,
           },
         },
       },

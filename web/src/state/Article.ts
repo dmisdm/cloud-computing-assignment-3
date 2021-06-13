@@ -1,4 +1,4 @@
-import { Article, Like } from "server/src/models";
+import { Article, Comment, Like } from "server/src/models";
 import {
   string,
   type,
@@ -7,6 +7,7 @@ import {
   array,
   optional,
   instance,
+  unknown,
 } from "superstruct";
 import { makeMutator, makeQuerier } from "./common";
 import { queryClient } from "./queryClient";
@@ -37,6 +38,8 @@ export const useBookmark = makeMutator(
                   source: "",
                   summary: "",
                   title: "",
+                  documentUrl: "",
+                  updatedAt: new Date(),
                 },
               },
             ]) || []
@@ -92,4 +95,20 @@ export const usePublishArticle = makeMutator({
   key: "publishArticle",
   url: "/api/articles/publish",
   multipartForm: true,
+});
+
+export const useComments = makeQuerier({
+  paramsStruct: optional(unknown()),
+  resultStruct: array(Comment),
+  key: "comments",
+  url: "/api/articles/comments",
+});
+export const useAddComment = makeMutator({
+  paramsStruct: type({
+    comment: string(),
+    articleId: string(),
+  }),
+  resultStruct: Comment,
+  key: "addComment",
+  url: "/api/articles/add-comment",
 });

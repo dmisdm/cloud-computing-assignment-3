@@ -97,7 +97,7 @@ export class BackendStack extends cdk.Stack {
           "service-role/AmazonECSTaskExecutionRolePolicy"
         ),
         iam.ManagedPolicy.fromAwsManagedPolicyName(
-          "policy/AmazonEMRFullAccessPolicy_v2"
+          "AmazonEMRFullAccessPolicy_v2"
         ),
       ],
     });
@@ -106,7 +106,7 @@ export class BackendStack extends cdk.Stack {
       new iam.PolicyStatement({
         effect: iam.Effect.ALLOW,
         resources: ["*"],
-        actions: ["secretsmanager:GetSecretValue"],
+        actions: ["secretsmanager:GetSecretValue", "elasticmapreduce:*"],
       })
     );
 
@@ -196,8 +196,11 @@ export class BackendStack extends cdk.Stack {
         vpc,
         port: 80,
         targets: [service],
+        deregistrationDelay: Duration.seconds(1),
         healthCheck: {
           path: "/api/health",
+          timeout: Duration.seconds(15),
+          interval: Duration.seconds(16),
         },
       }
     );

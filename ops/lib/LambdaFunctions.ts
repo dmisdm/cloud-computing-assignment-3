@@ -39,7 +39,7 @@ export class LambdaFunctionsStack extends cdk.Stack {
           "service-role/AWSLambdaVPCAccessExecutionRole"
         ),
         iam.ManagedPolicy.fromAwsManagedPolicyName(
-          "policy/AmazonEMRFullAccessPolicy_v2"
+          "AmazonEMRFullAccessPolicy_v2"
         ),
       ],
     });
@@ -50,6 +50,7 @@ export class LambdaFunctionsStack extends cdk.Stack {
       "UploaderLambda",
       {
         functionName: "BackendLambda",
+        memorySize: 512,
         vpc,
         vpcSubnets: vpc.selectSubnets({
           subnetType: SubnetType.PRIVATE,
@@ -63,6 +64,7 @@ export class LambdaFunctionsStack extends cdk.Stack {
           NODE_ENV: "production",
           ARTICLES_BUCKET: publicationsBucket.bucketName,
           POSTGRES_SECRET_ARN: databaseSecretName,
+          ANALYTICS_BUCKET: analyticsBucket.bucketName,
         },
         timeout: Duration.seconds(15),
       }

@@ -2,12 +2,9 @@ import * as emr from "@aws-sdk/client-emr";
 import * as s3 from "@aws-sdk/client-s3";
 import fs from "fs";
 import path from "path";
-import packageJson from "./package.json";
+
 const jarContents = fs.readFileSync(
-  path.resolve(
-    __dirname,
-    "../mapreducer/build/libs/mapreducer-1.0-SNAPSHOT-all.jar"
-  )
+  path.resolve(__dirname, "../mapreducer.jar")
 );
 
 export async function run({

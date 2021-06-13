@@ -29,14 +29,28 @@ export class GatewayStack extends cdk.Stack {
     });
 
     const fargateServiceIntegration = new apigateway.HttpIntegration(
-      `${backendLoadBalancerEndpoint}/{proxy}`,
-      { proxy: true }
+      `${backendLoadBalancerEndpoint}/api/{proxy}`,
+      {
+        proxy: true,
+        httpMethod: "ANY",
+        options: {
+          requestParameters: {
+            "integration.request.path.proxy": "method.request.path.proxy",
+          },
+        },
+      }
     );
     const rootApiResource = api.root.addResource("api");
     const rootProxyMethod = rootApiResource.addProxy({
       anyMethod: true,
       defaultIntegration: fargateServiceIntegration,
+      defaultMethodOptions: {
+        requestParameters: {
+          "method.request.path.proxy": true,
+        },
+      },
     });
+
     const publishArticleResource = rootApiResource
       .addResource("articles")
       .addResource("publish");

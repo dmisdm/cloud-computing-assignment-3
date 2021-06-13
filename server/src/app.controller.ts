@@ -142,12 +142,15 @@ export class AppController {
     const allOutputKeys = (await s3Client.send(listAllOutputs)).Contents?.map(
       (item) => item.Key,
     );
-    const deleteOutputCommand = new DeleteObjectsCommand({
-      Bucket: appConfig.analyticsBucket,
-      Delete: { Objects: allOutputKeys?.map((Key) => ({ Key })) },
-    });
+    if (allOutputKeys?.length && allOutputKeys.length > 0) {
+      const deleteOutputCommand = new DeleteObjectsCommand({
+        Bucket: appConfig.analyticsBucket,
+        Delete: { Objects: allOutputKeys?.map((Key) => ({ Key })) },
+      });
 
-    await s3Client.send(deleteOutputCommand);
+      await s3Client.send(deleteOutputCommand);
+    }
+
     await run({
       awsRegion: appConfig.awsRegion,
       bucketName: appConfig.analyticsBucket,

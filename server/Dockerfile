@@ -8,8 +8,7 @@ COPY package.json .yarnrc.yml yarn.lock ./
 COPY .yarn .yarn
 COPY server server
 COPY prisma-client prisma-client
-COPY analytics/mapreducer/build/libs/mapreducer-1.0-SNAPSHOT-all.jar analytics/mapreducer/build/libs/mapreducer-1.0-SNAPSHOT-all.jar
-
+COPY analytics analytics
 WORKDIR /usr/src/app/server
 RUN ls -la 
 RUN yarn workspaces focus && yarn build && yarn workspaces focus --production && yarn dedupe && yarn cache clean --all

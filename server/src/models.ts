@@ -13,6 +13,7 @@ import {
   type,
   union,
   unknown,
+  nullable,
 } from 'superstruct';
 
 export const coercedDate = coerce(
@@ -142,14 +143,23 @@ export const Article = type({
   title: string(),
   summary: string(),
   source: string(),
+  documentUrl: string(),
   authors: array(
     type({
       name: string(),
     }),
   ),
-  arxivArticle: optional(ArxivArticle),
+  arxivArticle: optional(nullable(ArxivArticle)),
+  updatedAt: coercedDate,
 });
 export const Like = type({
   articleId: string(),
   article: Article,
+});
+
+export const Comment = type({
+  text: string(),
+  author: UserDTO,
+  article: Article,
+  createdAt: coercedDate,
 });

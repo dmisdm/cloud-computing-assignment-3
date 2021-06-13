@@ -13,3 +13,6 @@ web/dist
 **/Dockerfile
 **/*.Dockerfile
 prisma-client/client
+analytics/mapreducer
+analytics/dist
+!analytics/mapreducer/build/libs/mapreducer-1.0-SNAPSHOT-all.jar

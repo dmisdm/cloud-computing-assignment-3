@@ -84,6 +84,7 @@ function RegisterForm() {
                 id: user.sub,
                 name: user.name,
                 email: user.email,
+                roles: user.roles,
               },
             }));
             router.push("/");

@@ -3,6 +3,7 @@ import {
   createMuiTheme,
   CssBaseline,
   ThemeProvider,
+  Typography,
 } from "@material-ui/core";
 import { x } from "@xstyled/emotion";
 import React from "react";
@@ -18,6 +19,8 @@ import { history } from "./state/history";
 import { queryClient } from "./state/queryClient";
 import { HomePage } from "./pages/Home";
 import { AnalyticsPage } from "./pages/Analytics";
+import { QueryStringRoute } from "./components/QueryStringRoute";
+import { ArticleViewerModal } from "./components/ArticleViewerModal";
 
 const theme = createMuiTheme({
   typography: {
