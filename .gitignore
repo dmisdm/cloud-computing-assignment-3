@@ -120,3 +120,7 @@ dist
 bundle.zip
 
 cdk.out
+
+.DS_Store
+
+.yarn/yarn.build.json

@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": false,
@@ -13,8 +17,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
-    "baseUrl": "."
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "noFallthroughCasesInSwitch": true
   },
-  "include": ["./src", "./typings"]
+  "include": [
+    "./src",
+    "./typings"
+  ]
 }

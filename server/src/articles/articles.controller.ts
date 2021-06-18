@@ -22,6 +22,7 @@ import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { appConfig } from 'src/config/config';
 import { v4 } from 'uuid';
 import { Article } from 'prisma-client';
+import getStream from 'get-stream';
 class ArticleLikeDTO {
   @IsNotEmpty()
   articleId!: string;

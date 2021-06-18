@@ -15,19 +15,18 @@ import {
 } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import React from "react";
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Legend,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
 import { NavBar } from "src/components/NavBar";
 import { Padding } from "src/components/Padding";
 import { mostFrequentSearchTerms } from "src/state/Analytics";
 import { axiosClient } from "src/state/axiosClient";
+import {
+  Chart,
+  BarSeries,
+  Title,
+  ArgumentAxis,
+  ValueAxis,
+} from "@devexpress/dx-react-chart-material-ui";
+import { Animation } from "@devexpress/dx-react-chart";
 export function AnalyticsPage() {
   const state = mostFrequentSearchTerms();
   const [toast, setToast] = React.useState<React.ReactNode>();
@@ -42,20 +41,20 @@ export function AnalyticsPage() {
         <Padding size={2} />
         <Box display="flex" justifyContent="center">
           {state.data && state.data.length ? (
-            <BarChart
+            <Chart
               width={1000}
               height={350}
               data={state.data
                 .sort((a, z) => z.frequency - a.frequency)
                 .slice(0, 10)}
             >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="term" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="frequency" name="Frequency" fill="#8884d8" />
-            </BarChart>
+              <ArgumentAxis />
+              <ValueAxis />
+
+              <BarSeries valueField="frequency" argumentField="term" />
+              <Title text="Term Frequency" />
+              <Animation />
+            </Chart>
           ) : null}
           {state.isLoading && <CircularProgress />}
         </Box>
